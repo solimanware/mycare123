@@ -1,0 +1,54 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid black;
+    margin: 30px auto;
+    width: 95%;
+  }
+  
+  .form-title{
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+  }
+  .form-input {
+    margin: 20px;
+   // text-align: center;
+  }
+
+  .split{
+    width: 100%;
+  }
+  .half{
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .form-input-half {
+   margin: 20px;
+   width: 90%;
+  }
+  .age-preview{
+    width:100%;
+    text-align: left;
+    .age-years{
+      width: 45%;
+      margin-right:10px;
+
+    }
+    .age-months{
+      width: 45%;
+    }
+  }
+  
+  .form-enter-button{
+    margin-right: 20px;
+  }
+  .enter-button{
+    width: 150px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    background: linear-gradient(to left ,#2cadc8,#32c5bf);
+  }
+  

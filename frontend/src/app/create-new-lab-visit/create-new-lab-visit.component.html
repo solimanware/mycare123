@@ -1,0 +1,65 @@
+<div class="create-visit-container">
+
+  <div class="visit-header">
+    <h2 class="inline-block pl-20 pr-20">Laboratory Visit ID: 25</h2>
+    <h2 class="inline-block pr-20 pl-20">Visit Date: 31/10/2018</h2>
+    <h2 class="inline-block pr-20 pl-20">Visit Time: 8:00 PM</h2>
+  </div>
+
+  <div class="main-container">
+    <div class="paient-info-container">
+      <h2>Patient Data:</h2>
+      <p>Name: محمد أحمد حسنين</p>
+      <p>Mobile Number: 01021925037</p>
+      <p>Gender: Male</p>
+      <p>E-mail: mohamedhasanen@gmail.com</p>
+      <p>Birth date: 10/1/1990</p>
+      <p>Age: 28 years</p>
+    </div>
+
+    <div class="add-labs-container">
+      <h2>Add Labs:</h2>
+      <mat-form-field class="tests-container">
+        <mat-select placeholder="Choose Test">
+          <mat-option *ngFor="let item of ['cbc','urine']" value="cbc">
+            {{item}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h3>LabNames:</h3>
+      <div class="tests-container">
+
+        <div class="test-container">
+          CBC <button mat-raised-button color="primary" class="remove-button">Remove</button>
+
+        </div>
+        <div class="test-container">
+          Urine analysis <button mat-raised-button color="primary" class="remove-button">Remove</button>
+        </div>
+
+      </div>
+
+      <div class="pb-20">
+
+        <h3 class="nomargin">Notes:</h3>
+        <textarea class="notes-area nopadding" name="notes" id="notes" cols="90" rows="6"></textarea>
+      </div>
+
+    </div>
+  </div>
+  <div class="action-buttons-container">
+
+    <div class="form-enter-button inline-block pt-20" align="center">
+      <button mat-raised-button color="primary" class="enter-button">Create Lab Visit</button>
+    </div>
+
+    <div class="form-enter-button inline-block pt-20" align="center">
+      <button mat-raised-button color="primary" class="enter-button">Discard</button>
+    </div>
+
+  </div>
+
+
+
+</div>

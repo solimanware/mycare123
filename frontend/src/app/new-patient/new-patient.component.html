@@ -1,0 +1,59 @@
+<div class="form-container">
+  <h1 class="form-title">Create New Patient :</h1>
+  <mat-form-field class="form-input">
+    <input matInput placeholder="Name" name="name">
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <input matInput placeholder="Mobile Number" type="text" [formControl]="mobileNumber" name="mobileNumber">
+  </mat-form-field>
+  <mat-form-field class="form-input">
+    <input matInput placeholder="Confirm Mobile Number" type="text"  [formControl]="confirmMobileNumber" name="confirmMobileNumber">
+  </mat-form-field>
+  <h1 class="form-title">Personal Information :</h1>
+  <div class="split">
+    <div class="half">
+
+      <mat-form-field class="form-input-half">
+        <mat-select placeholder="Gender">
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+            {{gender.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="form-input-half">
+        <input matInput placeholder="Enter your email" [formControl]="email" name="email">
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-input-half">
+        <input matInput placeholder="Profession" name="profession">
+      </mat-form-field>
+
+    </div>
+
+
+    <div class="half" align="end">
+      <mat-form-field class="form-input-half">
+        <input matInput placeholder="Birthdate" name="birthdate" type="date" data-date-format="DD MM YYYY" (change)="changeAge()" [formControl]="birthDate">
+      </mat-form-field>
+      <div class="form-input-half age-preview"> 
+        <mat-form-field class="age-years">
+          <input matInput placeholder="Years" name="age" [value]="ageYears" disabled>
+        </mat-form-field>
+        <mat-form-field class="age-months">
+          <input matInput placeholder="Months" name="age" [value]="ageMonths" disabled>
+        </mat-form-field>
+      </div>
+      
+
+    </div>
+
+
+
+  </div>
+
+  <div class="form-enter-button" align="end">
+    <button mat-raised-button color="primary" class="enter-button">Create</button>
+  </div>
+</div>
