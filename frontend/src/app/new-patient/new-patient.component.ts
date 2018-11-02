@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import * as moment from 'moment'
+import {FormControl, Validators, FormGroup} from '@angular/forms';
+import * as moment from 'moment';
 
+const mobileRegEx = /^[0]\d{10}$/;
 
 @Component({
   selector: 'app-new-patient',
@@ -16,14 +17,22 @@ export class NewPatientComponent implements OnInit {
   ]
   email = new FormControl('', [ Validators.email]);
   birthDate = new FormControl('', []);
-  mobileNumber = new FormControl('',[Validators.pattern('^[0]\d{10}$')])
-  confirmMobileNumber = new FormControl('',[Validators.pattern('^[0]\d{10}$')])
+  mobileNumber = new FormControl('',[Validators.pattern(mobileRegEx)])
+  confirmMobileNumber = new FormControl('',[Validators.pattern(mobileRegEx)])
   ageYears:number = 0;
   ageMonths:number = 0;
   constructor() { }
 
   ngOnInit() {
   }
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  let mobileNumber = group.controls.mobileNumber.value;
+  let confirmMobileNumber = group.controls.confirmMobileNumber.value;
+
+  return mobileNumber === confirmMobileNumber ? null : { notSame: true }     
+}
+
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :
         this.email.hasError('email') ? 'Not a valid email' :
