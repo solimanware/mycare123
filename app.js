@@ -1,6 +1,7 @@
 
 const express = require('express')
 const path = require('path');
+const cors = require('cors');
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app.use(morgan('dev'));
+app.use(cors()) 
 
 // Set Static Folder
 app.use(express.static('frontend/dist/mycare123'));
