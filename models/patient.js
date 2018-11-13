@@ -5,8 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     gender: DataTypes.STRING,
     prossion: DataTypes.STRING,
-    mobile: DataTypes.STRING
-  }, {});
+    mobile: DataTypes.STRING,
+    created_at: DataTypes.DATE,
+    updated_at: DataTypes.DATE,
+  }, {
+    timestamps: false
+  });
   Patient.associate = function(models) {
     // associations can be defined here
   };

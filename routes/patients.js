@@ -11,4 +11,6 @@ router.get('/:id', patientController.findById);
 
 router.patch('/:id', patientController.update);
 
+router.delete('/:id', patientController.delete);
+
 module.exports = router;
