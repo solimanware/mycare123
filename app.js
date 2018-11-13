@@ -15,17 +15,19 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app.use(morgan('dev'));
 
+// Set Static Folder
+app.use(express.static('frontend/dist/mycare123'));
 
 app.use('/patients', require('./routes/patients'));
 // app.use('/tests', require('./routes/tests'));
 // app.use('/visits', require('./routes/visits'));
 
 
-app.use((req, res, next) => {
-  const error = new Error('Not found');
-  error.status = 404;
-  next(error);
-});
+// app.use((req, res, next) => {
+//   const error = new Error('Not found');
+//   error.status = 404;
+//   next(error);
+// });
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
@@ -35,11 +37,13 @@ app.use((error, req, res, next) => {
     }
   });
 });
-// Set Static Folder
-app.use(express.static(path.join(__dirname, 'frontend/public')));
+
+
+console.log(path.join(__dirname, 'frontend/dist/mycare123/index.html'));
+
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/public/index.html'));
+  res.sendFile(path.join(__dirname, 'frontend/dist/mycare123/index.html'));
 });
 
 app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${port}!`))
