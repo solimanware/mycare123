@@ -1,12 +1,14 @@
-const TestCategory = require('../models').tests_categories;
 const Test = require('../models').tests;
+const TestsItems = require('../models').tests_items;
+const TestsCategories = require('../models').tests_categories;
+
 module.exports = {
 
     create: (request, response)  => {
         request.body.created_at =  new Date();
         request.body.updated_at = new Date();
         
-        TestCategory.create(request.body)
+        Test.create(request.body)
         .then(result => {
             response.status(200).send(result);
         })
@@ -16,9 +18,11 @@ module.exports = {
     },
 
     findAll:  (request, response)  => {
-        TestCategory.findAll({
+        Test.findAll({
             include: [
-                {model: Test}
+                {model: TestsItems},
+                {model: TestsCategories},
+
             ]
         })
         .then(result => {
@@ -30,11 +34,11 @@ module.exports = {
     },
     
     findById:  (request, response)  => {
-        TestCategory.findById(request.params.id, {
-            include: [
-                {model: Test}
-            ]
-        })
+        Test.findById(request.params.id, { include: [
+            {model: TestsItems},
+            {model: TestsCategories},
+
+        ]})
         .then(result => {
             response.status(200).send(result);
         })
@@ -44,12 +48,12 @@ module.exports = {
     },
     
     update: (request, response)  => {
-        const testCategory = request.body;
+        const test = request.body;
         const id = request.params.id;
-        TestCategory.update(testCategory, { where: { id } })
+        Test.update(test, { where: { id } })
         .then(result => {
-            TestCategory.findById(id).then(updatedTestCategory => {
-                response.status(200).send(updatedTestCategory);
+            Test.findById(id).then(updatedTest => {
+                response.status(200).send(updatedTest);
             }).catch(error => {
                 response.status(500).send(error);
             })
@@ -62,8 +66,8 @@ module.exports = {
     
     delete: (request, response)  => {
         const id = request.params.id;
-        TestCategory.findById(id).then(testCategory => {
-            testCategory.destroy();
+        Test.findById(id).then(test => {
+            test.destroy();
             response.status(200).send();
         }).catch(error => {
             response.status(500).send(error);

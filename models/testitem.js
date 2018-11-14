@@ -1,18 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const TestCategory = sequelize.define('tests_categories', {
+  const TestItem = sequelize.define('tests_items', {
     name: DataTypes.STRING,
-    parent_id: DataTypes.INTEGER,
+    normal_range: DataTypes.STRING,
+    test_id: DataTypes.INTEGER,
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE,
   }, {
     freezeTableName: true,
     timestamps: false
   });
-  TestCategory.associate = function(models) {
+  TestItem.associate = function(models) {
     // associations can be defined here
-    TestCategory.hasMany(models.tests, {foreignKey: 'category_id'});
+    TestItem.Test = TestItem.belongsTo(models.tests, {foreignKey: 'test_id'});
 
   };
-  return TestCategory;
+  return TestItem;
 };

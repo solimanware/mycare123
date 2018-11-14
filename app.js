@@ -22,7 +22,9 @@ app.use(express.static('frontend/dist/mycare123'));
 
 app.use('/patients', require('./routes/patients'));
 app.use('/tests_categories', require('./routes/tests_categories'));
-// app.use('/tests', require('./routes/tests'));
+app.use('/tests', require('./routes/tests'));
+app.use('/tests_items', require('./routes/tests_items'));
+
 // app.use('/visits', require('./routes/visits'));
 
 
