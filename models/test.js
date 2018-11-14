@@ -15,6 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       
     Test.belongsTo(models.tests_categories, {foreignKey: 'category_id'});
 
+    Test.belongsToMany(models.visits, {through: models.visits_tests, foreignKey: 'test_id'});
+
   };
   return Test;
 };

@@ -11,14 +11,12 @@ module.exports = (sequelize, DataTypes) => {
   });
   Visit.associate = function(models) {
     // associations can be defined 
-    //TODO:
-    /**
-     * patient
-     * tests
-     */
+    
+    // Patient
     Visit.belongsTo(models.Patient, {foreignKey: 'patient_id'});
 
-
+    // Tests
+    Visit.belongsToMany(models.tests, {through: models.visits_tests, foreignKey: 'visit_id'});
   };
   return Visit;
 };
