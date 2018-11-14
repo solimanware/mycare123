@@ -1,4 +1,5 @@
 const Patient = require('../models').Patient;
+const Visit = require('../models').visits;
 
 module.exports = {
 
@@ -16,7 +17,9 @@ module.exports = {
     },
 
     findAll:  (request, response)  => {
-        Patient.findAll()
+        Patient.findAll({
+            include:[{model: Visit}]
+        })
         .then(result => {
             response.status(200).send(result);
         })
@@ -26,7 +29,9 @@ module.exports = {
     },
     
     findById:  (request, response)  => {
-        Patient.findById(request.params.id)
+        Patient.findById(request.params.id,{
+            include:[{model: Visit}]
+        })
         .then(result => {
             response.status(200).send(result);
         })
