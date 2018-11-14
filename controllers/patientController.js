@@ -39,6 +39,18 @@ module.exports = {
             response.status(500).send(error);
         });
     },
+
+    search:  (request, response)  => {
+        const mobileNumber = request.query.mobile;
+
+        Patient.findAll({where: {mobile_number: mobileNumber}})
+        .then(result => {
+            response.status(200).send(result);
+        })
+        .catch(error => {
+            response.status(500).send(error);
+        });
+    },
     
     update: (request, response)  => {
         const patient = request.body;
