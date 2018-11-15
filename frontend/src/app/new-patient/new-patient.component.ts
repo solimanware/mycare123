@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import * as moment from 'moment';
+import { PatientService } from '../patient.service';
 
 const mobileRegEx = /^[0]\d{10}$/;
 
@@ -15,13 +16,17 @@ export class NewPatientComponent implements OnInit {
     {value:'female',viewValue:'Female'},
     {value:'other',viewValue:'Other'},
   ]
+  
+  name = new FormControl('', []);
+  gender = new FormControl('', []);
+  profession = new FormControl('', []);
   email = new FormControl('', [ Validators.email]);
   birthDate = new FormControl('', []);
   mobileNumber = new FormControl('',[Validators.pattern(mobileRegEx)])
   confirmMobileNumber = new FormControl('',[Validators.pattern(mobileRegEx)])
   ageYears:number = 0;
   ageMonths:number = 0;
-  constructor() { }
+  constructor(private patientService:PatientService) { }
 
   ngOnInit() {
   }
@@ -54,19 +59,23 @@ export class NewPatientComponent implements OnInit {
     this.ageYears = diff.years()
     this.ageMonths = diff.months();
   }
+
+
+  submitNewPatient(){
+
+    let data = {
+      name:this.name.value,
+      mobileNumber:this.mobileNumber.value,
+      gender:this.gender.value,
+      email:this.email.value,
+      birthDate:this.birthDate.value,
+      profession:this.profession.value
+    }
+    
+    this.patientService.postPatient(data).subscribe(res=>{
+      console.log(res);
+    })
+  }
 }
 
-//string
-//pros:
-//value more accurate > user is tech oriented // regex verfications
-//cons: 
-// alot of wrong entries in db //difficaulties in handling multible number formats
-
-
-//number
-//pros: symitric
-//
-//code of country more similar
-//cons: integer is limited in some programming languages
-//
 

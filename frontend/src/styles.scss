@@ -25,6 +25,22 @@ body {
 .pb-20{
   padding-bottom: 20px;
 }
+
+.m-20{
+  margin: 20px;
+}
+.ml-20{
+  margin-left: 20px;
+}
+.mr-20{
+  margin-right: 20px;
+}
+.mt-20{
+  margin-top: 20px;
+}
+.mb-20{
+  margin-bottom: 20px;
+}
 .nomargin{
   margin: 0 !important;
 }
@@ -36,5 +52,9 @@ body {
 }
 .full-width{
   width: 100%;
+}
+
+.vertical-center{
+  vertical-align: middle
 }
 

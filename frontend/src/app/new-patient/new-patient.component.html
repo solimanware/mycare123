@@ -1,7 +1,7 @@
 <div class="form-container">
   <h1 class="form-title">Create New Patient :</h1>
   <mat-form-field class="form-input">
-    <input matInput placeholder="Name" name="name">
+    <input matInput placeholder="Name" [formControl]="name" name="name">
   </mat-form-field>
   <mat-form-field class="form-input">
     <input matInput placeholder="Mobile Number" type="text" [formControl]="mobileNumber" name="mobileNumber">
@@ -14,7 +14,7 @@
     <div class="half">
 
       <mat-form-field class="form-input-half">
-        <mat-select placeholder="Gender">
+        <mat-select placeholder="Gender" [formControl]="gender">
           <mat-option *ngFor="let gender of genders" [value]="gender.value">
             {{gender.viewValue}}
           </mat-option>
@@ -27,7 +27,7 @@
       </mat-form-field>
 
       <mat-form-field class="form-input-half">
-        <input matInput placeholder="Profession" name="profession">
+        <input matInput placeholder="Profession" name="profession" [formControl]="profession">
       </mat-form-field>
 
     </div>
@@ -54,6 +54,6 @@
   </div>
 
   <div class="form-enter-button" align="end">
-    <button mat-raised-button color="primary" class="enter-button">Create</button>
+    <button mat-raised-button color="primary" (click)="submitNewPatient()" class="enter-button">Create</button>
   </div>
 </div>

@@ -16,18 +16,11 @@ import { NewLabVisitComponent } from './new-lab-visit/new-lab-visit.component';
 import { CreateNewLabVisitComponent } from './create-new-lab-visit/create-new-lab-visit.component';
 import { EnterTestResultsComponent } from './enter-test-results/enter-test-results.component';
 import { VisitsOverviewComponent } from './visits-overview/visits-overview.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AppRoutes } from './app.routing';
 
 
-const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'create/visit', component: NewLabVisitComponent },
-  { path: 'create/visit/new', component: CreateNewLabVisitComponent },
-  { path: 'visits/enter-results', component: EnterTestResultsComponent },
-  { path: 'create/patient', component: NewPatientComponent },
-  { path: 'visits', component: VisitsOverviewComponent },
-  { path: 'login', component: LoginComponent }
-];
+const routes: Routes = AppRoutes
 
 @NgModule({
   declarations: [
@@ -43,6 +36,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -50,7 +44,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
