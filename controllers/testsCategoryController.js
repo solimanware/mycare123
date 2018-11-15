@@ -1,13 +1,12 @@
-const Patient = require('../models').Patient;
-const Visit = require('../models').visits;
-
+const TestCategory = require('../models').tests_categories;
+const Test = require('../models').tests;
 module.exports = {
 
     create: (request, response)  => {
         request.body.created_at =  new Date();
         request.body.updated_at = new Date();
         
-        Patient.create(request.body)
+        TestCategory.create(request.body)
         .then(result => {
             response.status(200).send(result);
         })
@@ -17,8 +16,10 @@ module.exports = {
     },
 
     findAll:  (request, response)  => {
-        Patient.findAll({
-            include:[{model: Visit}]
+        TestCategory.findAll({
+            include: [
+                {model: Test}
+            ]
         })
         .then(result => {
             response.status(200).send(result);
@@ -29,21 +30,11 @@ module.exports = {
     },
     
     findById:  (request, response)  => {
-        Patient.findById(request.params.id,{
-            include:[{model: Visit}]
+        TestCategory.findById(request.params.id, {
+            include: [
+                {model: Test}
+            ]
         })
-        .then(result => {
-            response.status(200).send(result);
-        })
-        .catch(error => {
-            response.status(500).send(error);
-        });
-    },
-
-    search:  (request, response)  => {
-        const mobileNumber = request.query.mobile;
-
-        Patient.findAll({where: {mobile_number: mobileNumber}})
         .then(result => {
             response.status(200).send(result);
         })
@@ -53,12 +44,12 @@ module.exports = {
     },
     
     update: (request, response)  => {
-        const patient = request.body;
+        const testCategory = request.body;
         const id = request.params.id;
-        Patient.update(patient, { where: { id } })
+        TestCategory.update(testCategory, { where: { id } })
         .then(result => {
-            Patient.findById(id).then(updatedPatient => {
-                response.status(200).send(updatedPatient);
+            TestCategory.findById(id).then(updatedTestCategory => {
+                response.status(200).send(updatedTestCategory);
             }).catch(error => {
                 response.status(500).send(error);
             })
@@ -71,8 +62,8 @@ module.exports = {
     
     delete: (request, response)  => {
         const id = request.params.id;
-        Patient.findById(id).then(patient => {
-            patient.destroy();
+        TestCategory.findById(id).then(testCategory => {
+            testCategory.destroy();
             response.status(200).send();
         }).catch(error => {
             response.status(500).send(error);

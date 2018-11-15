@@ -1,6 +1,7 @@
 
 const express = require('express')
 const path = require('path');
+const cors = require('cors');
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -14,13 +15,16 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app.use(morgan('dev'));
+app.use(cors()) 
 
 // Set Static Folder
 app.use(express.static('frontend/dist/mycare123'));
 
 app.use('/patients', require('./routes/patients'));
-// app.use('/tests', require('./routes/tests'));
-// app.use('/visits', require('./routes/visits'));
+app.use('/tests_categories', require('./routes/tests_categories'));
+app.use('/tests', require('./routes/tests'));
+app.use('/tests_items', require('./routes/tests_items'));
+app.use('/visits', require('./routes/visits'));
 
 
 // app.use((req, res, next) => {
