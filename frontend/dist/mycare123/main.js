@@ -533,7 +533,7 @@ var AppRoutes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"create-visit-container\">\n\n  <h1 align=\"center\">Create New Lab Visit And Add Required Tests</h1>\n\n  <!-- <div class=\"visit-header\">\n    <h2 class=\"inline-block pl-20 pr-20\">Laboratory Visit ID: 25</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Date: 31/10/2018</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Time: 8:00 PM</h2>\n  </div> -->\n\n  <div class=\"main-container\">\n    <div class=\"paient-info-container\">\n      <h2>Patient Data:</h2>\n      <p>Name: <span>{{patient?.name}}</span></p>\n      <p>Mobile Number: <span>{{patient?.mobile_number}}</span></p>\n      <p>Gender: {{patient?.gender}}</p>\n      <p>E-mail: {{patient?.email}}</p>\n      <p>Birth date: {{patient?.birth_date}}</p>\n      <p>Age: > to be calculated</p>\n    </div>\n\n    <div class=\"add-labs-container\">\n      <h2>Add Labs:</h2>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Category\">\n          <mat-option *ngFor=\"let category of categories\" [value]=\"category.name\">\n            {{category.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <h3>LabNames:</h3>\n      <div class=\"tests-container\">\n\n        <div class=\"test-container\">\n          CBC <button mat-raised-button color=\"primary\" class=\"remove-button\">Remove</button>\n\n        </div>\n        <div class=\"test-container\">\n          Urine analysis <button mat-raised-button color=\"primary\" class=\"remove-button\">Remove</button>\n        </div>\n\n      </div>\n\n      <div class=\"pb-20\">\n\n        <h3 class=\"nomargin\">Notes:</h3>\n        <textarea class=\"notes-area nopadding\" name=\"notes\" id=\"notes\" cols=\"90\" rows=\"6\"></textarea>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"action-buttons-container\">\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Create Lab Visit</button>\n    </div>\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Discard</button>\n    </div>\n\n  </div>\n\n\n\n</div>"
+module.exports = "<div class=\"create-visit-container\">\n\n  <h1 align=\"center\">Create New Lab Visit And Add Required Tests</h1>\n\n  <!-- <div class=\"visit-header\">\n    <h2 class=\"inline-block pl-20 pr-20\">Laboratory Visit ID: 25</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Date: 31/10/2018</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Time: 8:00 PM</h2>\n  </div> -->\n\n  <div class=\"main-container\">\n    <div class=\"paient-info-container\">\n      <h2>Patient Data:</h2>\n      <p>Name: <span>{{patient?.name}}</span></p>\n      <p>Mobile Number: <span>{{patient?.mobile_number}}</span></p>\n      <p>Gender: {{patient?.gender}}</p>\n      <p>E-mail: {{patient?.email}}</p>\n      <p>Birth date: {{patient?.birth_date}}</p>\n      <p>Age: > to be calculated</p>\n    </div>\n\n    <div class=\"add-labs-container\">\n      <h2>Add Labs:</h2>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Category\" (selectionChange)=\"chooseTestName($event)\">\n          <mat-option *ngFor=\"let category of categories\" [value]=\"category.name\" >\n            {{category.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <br>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Name\" (selectionChange)=\"chooseItem($event)\">\n          <mat-option *ngFor=\"let test of tests\" [value]=\"test.name\">\n            {{test.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <br>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Item\" (selectionChange)=\"createNewTestItem($event)\">\n          <mat-option *ngFor=\"let item of items\" [value]=\"item.name\">\n            {{item.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <h3>LabNames:</h3>\n      <div class=\"tests-container\">\n\n        <div class=\"test-container\" *ngFor=\"let item of createdItems;let i=index\">\n          {{item}} <button mat-raised-button color=\"primary\" class=\"remove-button\" (click)=\"createdItems.splice(i,1)\">Remove</button>\n\n        </div>\n      </div>\n\n      <div class=\"pb-20\">\n\n        <h3 class=\"nomargin\">Notes:</h3>\n        <textarea class=\"notes-area nopadding\" name=\"notes\" id=\"notes\" cols=\"90\" rows=\"6\"></textarea>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"action-buttons-container\">\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Create Lab Visit</button>\n    </div>\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Discard</button>\n    </div>\n\n  </div>\n\n\n\n</div>"
 
 /***/ }),
 
@@ -580,6 +580,7 @@ var CreateNewLabVisitComponent = /** @class */ (function () {
         this.route = route;
         this.patientService = patientService;
         this.testService = testService;
+        this.createdItems = [];
     }
     CreateNewLabVisitComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -593,11 +594,45 @@ var CreateNewLabVisitComponent = /** @class */ (function () {
         });
         this.getTestsCategories();
     };
+    CreateNewLabVisitComponent.prototype.chooseTestName = function ($event) {
+        var catName = $event.value;
+        for (var i = 0; i < this.categories.length; i++) {
+            if (catName === this.categories[i].name) {
+                this.tests = this.categories[i]["tests"];
+                console.log(this.tests);
+            }
+        }
+    };
+    CreateNewLabVisitComponent.prototype.chooseItem = function ($event) {
+        var _this = this;
+        var testName = $event.value;
+        console.log(testName);
+        for (var i = 0; i < this.tests.length; i++) {
+            if (testName === this.tests[i].name) {
+                var id = this.tests[i].id;
+                this.testService.getTestItems(id).subscribe(function (items) {
+                    console.log(items);
+                    _this.items = items.tests_items;
+                });
+            }
+        }
+    };
     CreateNewLabVisitComponent.prototype.getTestsCategories = function () {
         var _this = this;
         this.testService.getAllTestsCategories().subscribe(function (categories) {
+            console.log(categories);
             _this.categories = categories;
         });
+    };
+    CreateNewLabVisitComponent.prototype.getTestItems = function (id) {
+        var _this = this;
+        this.testService.getTestItems(id).subscribe(function (items) {
+            _this.items = items;
+        });
+    };
+    CreateNewLabVisitComponent.prototype.createNewTestItem = function ($event) {
+        console.log($event.value);
+        this.createdItems.push($event.value);
     };
     CreateNewLabVisitComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1295,6 +1330,9 @@ var TestsService = /** @class */ (function () {
     }
     TestsService.prototype.getAllTestsCategories = function () {
         return this.http.get('https://mycare123.herokuapp.com/tests_categories');
+    };
+    TestsService.prototype.getTestItems = function (id) {
+        return this.http.get("https://mycare123.herokuapp.com/tests/" + id);
     };
     TestsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

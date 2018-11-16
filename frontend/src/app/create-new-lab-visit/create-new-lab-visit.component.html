@@ -22,9 +22,25 @@
     <div class="add-labs-container">
       <h2>Add Labs:</h2>
       <mat-form-field class="tests-container">
-        <mat-select placeholder="Choose Test Category">
-          <mat-option *ngFor="let category of categories" [value]="category.name">
+        <mat-select placeholder="Choose Test Category" (selectionChange)="chooseTestName($event)">
+          <mat-option *ngFor="let category of categories" [value]="category.name" >
             {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="tests-container">
+        <mat-select placeholder="Choose Test Name" (selectionChange)="chooseItem($event)">
+          <mat-option *ngFor="let test of tests" [value]="test.name">
+            {{test.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="tests-container">
+        <mat-select placeholder="Choose Test Item" (selectionChange)="createNewTestItem($event)">
+          <mat-option *ngFor="let item of items" [value]="item.name">
+            {{item.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -32,14 +48,10 @@
       <h3>LabNames:</h3>
       <div class="tests-container">
 
-        <div class="test-container">
-          CBC <button mat-raised-button color="primary" class="remove-button">Remove</button>
+        <div class="test-container" *ngFor="let item of createdItems;let i=index">
+          {{item}} <button mat-raised-button color="primary" class="remove-button" (click)="createdItems.splice(i,1)">Remove</button>
 
         </div>
-        <div class="test-container">
-          Urine analysis <button mat-raised-button color="primary" class="remove-button">Remove</button>
-        </div>
-
       </div>
 
       <div class="pb-20">
