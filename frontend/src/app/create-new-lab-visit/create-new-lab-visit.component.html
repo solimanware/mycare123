@@ -57,14 +57,14 @@
       <div class="pb-20">
 
         <h3 class="nomargin">Notes:</h3>
-        <textarea class="notes-area nopadding" name="notes" id="notes" cols="90" rows="6"></textarea>
+        <textarea class="notes-area nopadding" name="notes" id="notes" cols="90" rows="6" [(ngModel)]="notes"></textarea>
       </div>
 
     </div>
   </div>
   <div class="action-buttons-container">
 
-    <div class="form-enter-button inline-block pt-20" align="center">
+    <div class="form-enter-button inline-block pt-20" align="center" (click)="createNewVisit()">
       <button mat-raised-button color="primary" class="enter-button">Create Lab Visit</button>
     </div>
 

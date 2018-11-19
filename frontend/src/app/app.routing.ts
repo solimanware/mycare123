@@ -8,12 +8,12 @@ import { VisitsOverviewComponent } from "./visits-overview/visits-overview.compo
 import { LoginComponent } from "./login/login.component";
 
 export const AppRoutes: Routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: '/visits', pathMatch: 'full' },
+    { path: 'visits', component: VisitsOverviewComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'create/visit', component: NewLabVisitComponent },
     { path: 'create/visit/new', component: CreateNewLabVisitComponent },
     { path: 'visits/enter-results', component: EnterTestResultsComponent },
     { path: 'create/patient', component: NewPatientComponent },
-    { path: 'visits', component: VisitsOverviewComponent },
     { path: 'login', component: LoginComponent }
   ];

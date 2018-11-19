@@ -50,13 +50,17 @@ export class NewPatientComponent implements OnInit {
     ''
   }
  
-  changeAge(){
-    let dob = this.birthDate.value
+  changeAge(event){
+    console.log(event.value);
+    
+    let dob = moment(event.value)    
     let now = moment()
 
     let diff = moment.duration(now.diff(dob))
 
     this.ageYears = diff.years()
+    console.log(this.ageYears);
+    
     this.ageMonths = diff.months();
   }
 

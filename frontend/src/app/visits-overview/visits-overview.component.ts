@@ -1,6 +1,7 @@
 import { MatPaginator, MatTableDataSource } from "@angular/material";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import * as moment from 'moment';
+import { VisitService } from "../visit.service";
 
 @Component({
   selector: "app-visits-overview",
@@ -8,16 +9,28 @@ import * as moment from 'moment';
   styleUrls: ["./visits-overview.component.scss"]
 })
 export class VisitsOverviewComponent implements OnInit {
-  constructor() {}
+  constructor(private visitSerivce:VisitService) {}
   displayedColumns: string[] = ["id", "name", "mobileNumber","visitDate"];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-
+  currentSelection;
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
+    this.visitSerivce.getVisits().subscribe((data:any)=>{
+      console.log(data);
+      
+      this.dataSource = new MatTableDataSource<any>(data);
+    })
   }
+  chooseVisit(row){
+    console.log(row);
+    this.currentSelection = row.position;
+    
+  }
+
+
 }
 
 export interface PeriodicElement {

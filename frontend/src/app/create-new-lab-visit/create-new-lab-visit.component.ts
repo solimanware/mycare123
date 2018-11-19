@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PatientService } from '../patient.service';
 import { TestsService } from '../tests.service';
+import { VisitService } from '../visit.service';
 
 @Component({
   selector: 'app-create-new-lab-visit',
@@ -14,7 +15,9 @@ export class CreateNewLabVisitComponent implements OnInit {
   tests;
   items;
   createdItems = [];
-  constructor(private route: ActivatedRoute, private patientService: PatientService, private testService: TestsService) { }
+  notes;
+  testIds = [];
+  constructor(private route: ActivatedRoute, private patientService: PatientService, private testService: TestsService,private visitSerivce:VisitService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(({ id }) => {
@@ -25,6 +28,16 @@ export class CreateNewLabVisitComponent implements OnInit {
       // console.log(this.patient);
     })
     this.getTestsCategories();
+  }
+
+
+  createNewVisit(){
+    console.log(this.patient["id"],this.testIds,this.notes);
+    
+    this.visitSerivce.postVisit(this.patient["id"],this.testIds,this.notes).subscribe(res=>{
+      console.log(res);
+      
+    })
   }
 
   chooseTestName($event) {
@@ -46,7 +59,7 @@ export class CreateNewLabVisitComponent implements OnInit {
       if (testName === this.tests[i].name) {
         let id = this.tests[i].id
         this.testService.getTestItems(id).subscribe((items:any) => { 
-        console.log(items);
+        this.testIds.push(items.id)
         
           this.items = items.tests_items
         })

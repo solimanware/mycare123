@@ -1,26 +1,45 @@
 <div class="form-container">
-  <h1 class="form-title">Create New Patient :</h1>
-  <mat-form-field class="form-input">
-    <input matInput placeholder="Name" [formControl]="name" name="name">
-  </mat-form-field>
-  <mat-form-field class="form-input">
-    <input matInput placeholder="Mobile Number" type="text" [formControl]="mobileNumber" name="mobileNumber">
-  </mat-form-field>
-  <mat-form-field class="form-input">
-    <input matInput placeholder="Confirm Mobile Number" type="text"  [formControl]="confirmMobileNumber" name="confirmMobileNumber">
-  </mat-form-field>
-  <h1 class="form-title">Personal Information :</h1>
+  <h1 class="text-center">Create New Patient</h1>
+
+
   <div class="split">
     <div class="half">
+      <mat-form-field class="form-input-half">
+        <input matInput required placeholder="Name" [formControl]="name" name="name">
+      </mat-form-field>
+      <mat-form-field class="form-input-half">
+        <input matInput required placeholder="Mobile Number" type="text" [formControl]="mobileNumber" name="mobileNumber">
+      </mat-form-field>
+      <mat-form-field class="form-input-half">
+        <input matInput required placeholder="Confirm Mobile Number" type="text" [formControl]="confirmMobileNumber" name="confirmMobileNumber">
+      </mat-form-field>
 
       <mat-form-field class="form-input-half">
-        <mat-select placeholder="Gender" [formControl]="gender">
+        <mat-select required placeholder="Gender" [formControl]="gender">
           <mat-option *ngFor="let gender of genders" [value]="gender.value">
             {{gender.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
+
+    </div>
+
+
+    <div class="half float-right" align="end">
+      <mat-form-field class="form-input-half">
+        <input matInput required [matDatepicker]="picker" placeholder="Choose a date"(dateChange)="changeAge($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
+      <div class="form-input-half age-preview">
+        <mat-form-field class="age-years">
+          <input matInput placeholder="Years" name="age" [value]="ageYears" disabled>
+        </mat-form-field>
+        <mat-form-field class="age-months">
+          <input matInput placeholder="Months" name="age" [value]="ageMonths" disabled>
+        </mat-form-field>
+      </div>
       <mat-form-field class="form-input-half">
         <input matInput placeholder="Enter your email" [formControl]="email" name="email">
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
@@ -30,22 +49,6 @@
         <input matInput placeholder="Profession" name="profession" [formControl]="profession">
       </mat-form-field>
 
-    </div>
-
-
-    <div class="half" align="end">
-      <mat-form-field class="form-input-half">
-        <input matInput placeholder="Birthdate" name="birthdate" type="date" data-date-format="DD MM YYYY" (change)="changeAge()" [formControl]="birthDate">
-      </mat-form-field>
-      <div class="form-input-half age-preview"> 
-        <mat-form-field class="age-years">
-          <input matInput placeholder="Years" name="age" [value]="ageYears" disabled>
-        </mat-form-field>
-        <mat-form-field class="age-months">
-          <input matInput placeholder="Months" name="age" [value]="ageMonths" disabled>
-        </mat-form-field>
-      </div>
-      
 
     </div>
 

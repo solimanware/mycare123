@@ -8,12 +8,13 @@
   }
   
   .form-title{
-  margin-top: 30px;
-  margin-right: 20px;
-  margin-left: 20px;
+  // margin-top: 30px;
+   margin-right: 20px;
+   margin-left: 20px;
   }
   .form-input {
-    margin: 20px;
+    margin-right: 20px;
+   margin-left: 20px;
    // text-align: center;
   }
 
@@ -21,12 +22,13 @@
     width: 100%;
   }
   .half{
-    width: 45%;
+    width: 50%;
     display: inline-block;
     vertical-align: top;
   }
   .form-input-half {
-   margin: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
    width: 90%;
   }
   .age-preview{
