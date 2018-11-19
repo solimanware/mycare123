@@ -26,7 +26,7 @@ export class VisitsOverviewComponent implements OnInit {
   }
   chooseVisit(row){
     console.log(row);
-    this.currentSelection = row.position;
+    this.currentSelection = row.id;
     
   }
 
