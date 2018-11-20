@@ -1218,7 +1218,7 @@ var PatientService = /** @class */ (function () {
     }
     PatientService.prototype.postPatient = function (_a) {
         var name = _a.name, mobileNumber = _a.mobileNumber, gender = _a.gender, birthDate = _a.birthDate, email = _a.email, profession = _a.profession;
-        return this.http.post('https://mycare123.herokuapp.com/patients', {
+        return this.http.post('https://mycare123.herokuapp.com/api/patients', {
             name: name,
             mobile_number: mobileNumber,
             gender: gender,
@@ -1228,13 +1228,13 @@ var PatientService = /** @class */ (function () {
         });
     };
     PatientService.prototype.getAllPatients = function () {
-        return this.http.get('https://mycare123.herokuapp.com/patients');
+        return this.http.get('https://mycare123.herokuapp.com/api/patients');
     };
     PatientService.prototype.searchPatientByMobile = function (mobile) {
-        return this.http.get("https://mycare123.herokuapp.com/patients/search/?mobile=" + mobile);
+        return this.http.get("https://mycare123.herokuapp.com/api/patients/search/?mobile=" + mobile);
     };
     PatientService.prototype.getPatientById = function (id) {
-        return this.http.get("https://mycare123.herokuapp.com/patients/" + id);
+        return this.http.get("https://mycare123.herokuapp.com/api/patients/" + id);
     };
     PatientService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1344,10 +1344,10 @@ var TestsService = /** @class */ (function () {
         this.http = http;
     }
     TestsService.prototype.getAllTestsCategories = function () {
-        return this.http.get('https://mycare123.herokuapp.com/tests_categories');
+        return this.http.get('https://mycare123.herokuapp.com/api/tests_categories');
     };
     TestsService.prototype.getTestItems = function (id) {
-        return this.http.get("https://mycare123.herokuapp.com/tests/" + id);
+        return this.http.get("https://mycare123.herokuapp.com/api/tests/" + id);
     };
     TestsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1390,14 +1390,14 @@ var VisitService = /** @class */ (function () {
         this.http = http;
     }
     VisitService.prototype.postVisit = function (patientId, testIds, notes) {
-        return this.http.post('https://mycare123.herokuapp.com/visits', {
+        return this.http.post('https://mycare123.herokuapp.com/api/visits', {
             patient_id: patientId,
             tests_ids: testIds,
             notes: notes
         });
     };
     VisitService.prototype.getVisits = function () {
-        return this.http.get('https://mycare123.herokuapp.com/visits');
+        return this.http.get('https://mycare123.herokuapp.com/api/visits');
     };
     VisitService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
