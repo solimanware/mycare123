@@ -41,7 +41,10 @@ module.exports = {
 
     findById: (request, response) => {
         Visit.findById(request.params.id, {
-            include: [{model: Patient}]
+            include: [
+                {model: Patient},
+                {model: Tests},
+            ]
         })
             .then(result => {
                 response.status(200).send(result);
