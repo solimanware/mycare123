@@ -20,11 +20,11 @@ app.use(cors())
 // Set Static Folder
 app.use(express.static('frontend/dist/mycare123'));
 
-app.use('/patients', require('./routes/patients'));
-app.use('/tests_categories', require('./routes/tests_categories'));
-app.use('/tests', require('./routes/tests'));
-app.use('/tests_items', require('./routes/tests_items'));
-app.use('/visits', require('./routes/visits'));
+app.use('/api/patients', require('./routes/patients'));
+app.use('/api/tests_categories', require('./routes/tests_categories'));
+app.use('/api/tests', require('./routes/tests'));
+app.use('/api/tests_items', require('./routes/tests_items'));
+app.use('/api/visits', require('./routes/visits'));
 
 
 // app.use((req, res, next) => {
