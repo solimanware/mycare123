@@ -13,9 +13,7 @@ export class SideNavComponent implements OnInit {
 
   constructor() {
     this.menuItems = [
-      {title: 'Dashboard', link: '/dashboard' , icon: 'dashboard'},
       {title: 'New Lab Visit', link: '/create/visit' , icon: 'create'},
-      {title: 'New Patient', link: '/create/patient' , icon: 'add'},
       {title: 'Visits Overview', link: '/visits' , icon: 'book'},
     ];
   }

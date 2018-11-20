@@ -11,4 +11,7 @@ export class TestsService {
   getAllTestsCategories(){
     return this.http.get('https://mycare123.herokuapp.com/tests_categories')
   }
+  getTestItems(id){
+    return this.http.get(`https://mycare123.herokuapp.com/tests/${id}`)
+  }
 }

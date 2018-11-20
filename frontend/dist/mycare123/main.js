@@ -418,14 +418,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _new_patient_new_patient_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./new-patient/new-patient.component */ "./src/app/new-patient/new-patient.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _new_lab_visit_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./new-lab-visit/new-lab-visit.component */ "./src/app/new-lab-visit/new-lab-visit.component.ts");
-/* harmony import */ var _create_new_lab_visit_create_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./create-new-lab-visit/create-new-lab-visit.component */ "./src/app/create-new-lab-visit/create-new-lab-visit.component.ts");
-/* harmony import */ var _enter_test_results_enter_test_results_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./enter-test-results/enter-test-results.component */ "./src/app/enter-test-results/enter-test-results.component.ts");
-/* harmony import */ var _visits_overview_visits_overview_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./visits-overview/visits-overview.component */ "./src/app/visits-overview/visits-overview.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./app.routing */ "./src/app/app.routing.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _new_patient_new_patient_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./new-patient/new-patient.component */ "./src/app/new-patient/new-patient.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _new_lab_visit_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./new-lab-visit/new-lab-visit.component */ "./src/app/new-lab-visit/new-lab-visit.component.ts");
+/* harmony import */ var _create_new_lab_visit_create_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./create-new-lab-visit/create-new-lab-visit.component */ "./src/app/create-new-lab-visit/create-new-lab-visit.component.ts");
+/* harmony import */ var _enter_test_results_enter_test_results_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./enter-test-results/enter-test-results.component */ "./src/app/enter-test-results/enter-test-results.component.ts");
+/* harmony import */ var _visits_overview_visits_overview_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./visits-overview/visits-overview.component */ "./src/app/visits-overview/visits-overview.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_routing__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.routing */ "./src/app/app.routing.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -450,7 +451,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var routes = _app_routing__WEBPACK_IMPORTED_MODULE_17__["AppRoutes"];
+
+var routes = _app_routing__WEBPACK_IMPORTED_MODULE_18__["AppRoutes"];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -461,23 +463,26 @@ var AppModule = /** @class */ (function () {
                 _side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_5__["SideNavComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"],
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_7__["DashboardComponent"],
-                _new_patient_new_patient_component__WEBPACK_IMPORTED_MODULE_10__["NewPatientComponent"],
-                _new_lab_visit_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_12__["NewLabVisitComponent"],
-                _create_new_lab_visit_create_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_13__["CreateNewLabVisitComponent"],
-                _enter_test_results_enter_test_results_component__WEBPACK_IMPORTED_MODULE_14__["EnterTestResultsComponent"],
-                _visits_overview_visits_overview_component__WEBPACK_IMPORTED_MODULE_15__["VisitsOverviewComponent"]
+                _new_patient_new_patient_component__WEBPACK_IMPORTED_MODULE_11__["NewPatientComponent"],
+                _new_lab_visit_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_13__["NewLabVisitComponent"],
+                _create_new_lab_visit_create_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_14__["CreateNewLabVisitComponent"],
+                _enter_test_results_enter_test_results_component__WEBPACK_IMPORTED_MODULE_15__["EnterTestResultsComponent"],
+                _visits_overview_visits_overview_component__WEBPACK_IMPORTED_MODULE_16__["VisitsOverviewComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_16__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterModule"].forRoot(routes),
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
                 _custom_material_custom_material_module__WEBPACK_IMPORTED_MODULE_0__["CustomMaterialModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ReactiveFormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_12__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_12__["ReactiveFormsModule"]
             ],
-            providers: [_angular_common_http__WEBPACK_IMPORTED_MODULE_16__["HttpClientModule"]],
+            providers: [
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
+                { provide: _angular_material__WEBPACK_IMPORTED_MODULE_10__["MAT_DATE_LOCALE"], useValue: 'en-GB' }
+            ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
@@ -513,13 +518,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppRoutes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: '/visits', pathMatch: 'full' },
+    { path: 'visits', component: _visits_overview_visits_overview_component__WEBPACK_IMPORTED_MODULE_5__["VisitsOverviewComponent"] },
     { path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_0__["DashboardComponent"] },
     { path: 'create/visit', component: _new_lab_visit_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_1__["NewLabVisitComponent"] },
     { path: 'create/visit/new', component: _create_new_lab_visit_create_new_lab_visit_component__WEBPACK_IMPORTED_MODULE_2__["CreateNewLabVisitComponent"] },
     { path: 'visits/enter-results', component: _enter_test_results_enter_test_results_component__WEBPACK_IMPORTED_MODULE_3__["EnterTestResultsComponent"] },
     { path: 'create/patient', component: _new_patient_new_patient_component__WEBPACK_IMPORTED_MODULE_4__["NewPatientComponent"] },
-    { path: 'visits', component: _visits_overview_visits_overview_component__WEBPACK_IMPORTED_MODULE_5__["VisitsOverviewComponent"] },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"] }
 ];
 
@@ -533,7 +538,7 @@ var AppRoutes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"create-visit-container\">\n\n  <h1 align=\"center\">Create New Lab Visit And Add Required Tests</h1>\n\n  <!-- <div class=\"visit-header\">\n    <h2 class=\"inline-block pl-20 pr-20\">Laboratory Visit ID: 25</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Date: 31/10/2018</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Time: 8:00 PM</h2>\n  </div> -->\n\n  <div class=\"main-container\">\n    <div class=\"paient-info-container\">\n      <h2>Patient Data:</h2>\n      <p>Name: <span>{{patient?.name}}</span></p>\n      <p>Mobile Number: <span>{{patient?.mobile_number}}</span></p>\n      <p>Gender: {{patient?.gender}}</p>\n      <p>E-mail: {{patient?.email}}</p>\n      <p>Birth date: {{patient?.birth_date}}</p>\n      <p>Age: > to be calculated</p>\n    </div>\n\n    <div class=\"add-labs-container\">\n      <h2>Add Labs:</h2>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Category\">\n          <mat-option *ngFor=\"let category of categories\" [value]=\"category.name\">\n            {{category.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <h3>LabNames:</h3>\n      <div class=\"tests-container\">\n\n        <div class=\"test-container\">\n          CBC <button mat-raised-button color=\"primary\" class=\"remove-button\">Remove</button>\n\n        </div>\n        <div class=\"test-container\">\n          Urine analysis <button mat-raised-button color=\"primary\" class=\"remove-button\">Remove</button>\n        </div>\n\n      </div>\n\n      <div class=\"pb-20\">\n\n        <h3 class=\"nomargin\">Notes:</h3>\n        <textarea class=\"notes-area nopadding\" name=\"notes\" id=\"notes\" cols=\"90\" rows=\"6\"></textarea>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"action-buttons-container\">\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Create Lab Visit</button>\n    </div>\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Discard</button>\n    </div>\n\n  </div>\n\n\n\n</div>"
+module.exports = "<div class=\"create-visit-container\">\n\n  <h1 align=\"center\">Create New Lab Visit And Add Required Tests</h1>\n\n  <!-- <div class=\"visit-header\">\n    <h2 class=\"inline-block pl-20 pr-20\">Laboratory Visit ID: 25</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Date: 31/10/2018</h2>\n    <h2 class=\"inline-block pr-20 pl-20\">Visit Time: 8:00 PM</h2>\n  </div> -->\n\n  <div class=\"main-container\">\n    <div class=\"paient-info-container\">\n      <h2>Patient Data:</h2>\n      <p>Name: <span>{{patient?.name}}</span></p>\n      <p>Mobile Number: <span>{{patient?.mobile_number}}</span></p>\n      <p>Gender: {{patient?.gender}}</p>\n      <p>E-mail: {{patient?.email}}</p>\n      <p>Birth date: {{patient?.birth_date}}</p>\n      <p>Age: > to be calculated</p>\n    </div>\n\n    <div class=\"add-labs-container\">\n      <h2>Add Labs:</h2>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Category\" (selectionChange)=\"chooseTestName($event)\">\n          <mat-option *ngFor=\"let category of categories\" [value]=\"category.name\" >\n            {{category.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <br>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Name\" (selectionChange)=\"chooseItem($event)\">\n          <mat-option *ngFor=\"let test of tests\" [value]=\"test.name\">\n            {{test.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <br>\n      <mat-form-field class=\"tests-container\">\n        <mat-select placeholder=\"Choose Test Item\" (selectionChange)=\"createNewTestItem($event)\">\n          <mat-option *ngFor=\"let item of items\" [value]=\"item.name\">\n            {{item.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <h3>LabNames:</h3>\n      <div class=\"tests-container\">\n\n        <div class=\"test-container\" *ngFor=\"let item of createdItems;let i=index\">\n          {{item}} <button mat-raised-button color=\"primary\" class=\"remove-button\" (click)=\"createdItems.splice(i,1)\">Remove</button>\n\n        </div>\n      </div>\n\n      <div class=\"pb-20\">\n\n        <h3 class=\"nomargin\">Notes:</h3>\n        <textarea class=\"notes-area nopadding\" name=\"notes\" id=\"notes\" cols=\"90\" rows=\"6\" [(ngModel)]=\"notes\"></textarea>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"action-buttons-container\">\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\" (click)=\"createNewVisit()\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Create Lab Visit</button>\n    </div>\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\">\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Discard</button>\n    </div>\n\n  </div>\n\n\n\n</div>"
 
 /***/ }),
 
@@ -562,6 +567,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _patient_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../patient.service */ "./src/app/patient.service.ts");
 /* harmony import */ var _tests_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../tests.service */ "./src/app/tests.service.ts");
+/* harmony import */ var _visit_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../visit.service */ "./src/app/visit.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -575,11 +581,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var CreateNewLabVisitComponent = /** @class */ (function () {
-    function CreateNewLabVisitComponent(route, patientService, testService) {
+    function CreateNewLabVisitComponent(route, patientService, testService, visitSerivce) {
         this.route = route;
         this.patientService = patientService;
         this.testService = testService;
+        this.visitSerivce = visitSerivce;
+        this.createdItems = [];
+        this.testIds = [];
     }
     CreateNewLabVisitComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -593,11 +603,51 @@ var CreateNewLabVisitComponent = /** @class */ (function () {
         });
         this.getTestsCategories();
     };
+    CreateNewLabVisitComponent.prototype.createNewVisit = function () {
+        console.log(this.patient["id"], this.testIds, this.notes);
+        this.visitSerivce.postVisit(this.patient["id"], this.testIds, this.notes).subscribe(function (res) {
+            console.log(res);
+        });
+    };
+    CreateNewLabVisitComponent.prototype.chooseTestName = function ($event) {
+        var catName = $event.value;
+        for (var i = 0; i < this.categories.length; i++) {
+            if (catName === this.categories[i].name) {
+                this.tests = this.categories[i]["tests"];
+                console.log(this.tests);
+            }
+        }
+    };
+    CreateNewLabVisitComponent.prototype.chooseItem = function ($event) {
+        var _this = this;
+        var testName = $event.value;
+        console.log(testName);
+        for (var i = 0; i < this.tests.length; i++) {
+            if (testName === this.tests[i].name) {
+                var id = this.tests[i].id;
+                this.testService.getTestItems(id).subscribe(function (items) {
+                    _this.testIds.push(items.id);
+                    _this.items = items.tests_items;
+                });
+            }
+        }
+    };
     CreateNewLabVisitComponent.prototype.getTestsCategories = function () {
         var _this = this;
         this.testService.getAllTestsCategories().subscribe(function (categories) {
+            console.log(categories);
             _this.categories = categories;
         });
+    };
+    CreateNewLabVisitComponent.prototype.getTestItems = function (id) {
+        var _this = this;
+        this.testService.getTestItems(id).subscribe(function (items) {
+            _this.items = items;
+        });
+    };
+    CreateNewLabVisitComponent.prototype.createNewTestItem = function ($event) {
+        console.log($event.value);
+        this.createdItems.push($event.value);
     };
     CreateNewLabVisitComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -605,7 +655,7 @@ var CreateNewLabVisitComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./create-new-lab-visit.component.html */ "./src/app/create-new-lab-visit/create-new-lab-visit.component.html"),
             styles: [__webpack_require__(/*! ./create-new-lab-visit.component.scss */ "./src/app/create-new-lab-visit/create-new-lab-visit.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _patient_service__WEBPACK_IMPORTED_MODULE_2__["PatientService"], _tests_service__WEBPACK_IMPORTED_MODULE_3__["TestsService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _patient_service__WEBPACK_IMPORTED_MODULE_2__["PatientService"], _tests_service__WEBPACK_IMPORTED_MODULE_3__["TestsService"], _visit_service__WEBPACK_IMPORTED_MODULE_4__["VisitService"]])
     ], CreateNewLabVisitComponent);
     return CreateNewLabVisitComponent;
 }());
@@ -1023,7 +1073,7 @@ var NewLabVisitComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-container\">\n  <h1 class=\"form-title\">Create New Patient :</h1>\n  <mat-form-field class=\"form-input\">\n    <input matInput placeholder=\"Name\" [formControl]=\"name\" name=\"name\">\n  </mat-form-field>\n  <mat-form-field class=\"form-input\">\n    <input matInput placeholder=\"Mobile Number\" type=\"text\" [formControl]=\"mobileNumber\" name=\"mobileNumber\">\n  </mat-form-field>\n  <mat-form-field class=\"form-input\">\n    <input matInput placeholder=\"Confirm Mobile Number\" type=\"text\"  [formControl]=\"confirmMobileNumber\" name=\"confirmMobileNumber\">\n  </mat-form-field>\n  <h1 class=\"form-title\">Personal Information :</h1>\n  <div class=\"split\">\n    <div class=\"half\">\n\n      <mat-form-field class=\"form-input-half\">\n        <mat-select placeholder=\"Gender\" [formControl]=\"gender\">\n          <mat-option *ngFor=\"let gender of genders\" [value]=\"gender.value\">\n            {{gender.viewValue}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <mat-form-field class=\"form-input-half\">\n        <input matInput placeholder=\"Enter your email\" [formControl]=\"email\" name=\"email\">\n        <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n      </mat-form-field>\n\n      <mat-form-field class=\"form-input-half\">\n        <input matInput placeholder=\"Profession\" name=\"profession\" [formControl]=\"profession\">\n      </mat-form-field>\n\n    </div>\n\n\n    <div class=\"half\" align=\"end\">\n      <mat-form-field class=\"form-input-half\">\n        <input matInput placeholder=\"Birthdate\" name=\"birthdate\" type=\"date\" data-date-format=\"DD MM YYYY\" (change)=\"changeAge()\" [formControl]=\"birthDate\">\n      </mat-form-field>\n      <div class=\"form-input-half age-preview\"> \n        <mat-form-field class=\"age-years\">\n          <input matInput placeholder=\"Years\" name=\"age\" [value]=\"ageYears\" disabled>\n        </mat-form-field>\n        <mat-form-field class=\"age-months\">\n          <input matInput placeholder=\"Months\" name=\"age\" [value]=\"ageMonths\" disabled>\n        </mat-form-field>\n      </div>\n      \n\n    </div>\n\n\n\n  </div>\n\n  <div class=\"form-enter-button\" align=\"end\">\n    <button mat-raised-button color=\"primary\" (click)=\"submitNewPatient()\" class=\"enter-button\">Create</button>\n  </div>\n</div>"
+module.exports = "<div class=\"form-container\">\n  <h1 class=\"text-center\">Create New Patient</h1>\n\n\n  <div class=\"split\">\n    <div class=\"half\">\n      <mat-form-field class=\"form-input-half\">\n        <input matInput required placeholder=\"Name\" [formControl]=\"name\" name=\"name\">\n      </mat-form-field>\n      <mat-form-field class=\"form-input-half\">\n        <input matInput required placeholder=\"Mobile Number\" type=\"text\" [formControl]=\"mobileNumber\" name=\"mobileNumber\">\n      </mat-form-field>\n      <mat-form-field class=\"form-input-half\">\n        <input matInput required placeholder=\"Confirm Mobile Number\" type=\"text\" [formControl]=\"confirmMobileNumber\" name=\"confirmMobileNumber\">\n      </mat-form-field>\n\n      <mat-form-field class=\"form-input-half\">\n        <mat-select required placeholder=\"Gender\" [formControl]=\"gender\">\n          <mat-option *ngFor=\"let gender of genders\" [value]=\"gender.value\">\n            {{gender.viewValue}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n\n    </div>\n\n\n    <div class=\"half float-right\" align=\"end\">\n      <mat-form-field class=\"form-input-half\">\n        <input matInput required [matDatepicker]=\"picker\" placeholder=\"Choose a date\"(dateChange)=\"changeAge($event)\">\n        <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n        <mat-datepicker touchUi #picker></mat-datepicker>\n      </mat-form-field>\n      <div class=\"form-input-half age-preview\">\n        <mat-form-field class=\"age-years\">\n          <input matInput placeholder=\"Years\" name=\"age\" [value]=\"ageYears\" disabled>\n        </mat-form-field>\n        <mat-form-field class=\"age-months\">\n          <input matInput placeholder=\"Months\" name=\"age\" [value]=\"ageMonths\" disabled>\n        </mat-form-field>\n      </div>\n      <mat-form-field class=\"form-input-half\">\n        <input matInput placeholder=\"Enter your email\" [formControl]=\"email\" name=\"email\">\n        <mat-error *ngIf=\"email.invalid\">{{getErrorMessage()}}</mat-error>\n      </mat-form-field>\n\n      <mat-form-field class=\"form-input-half\">\n        <input matInput placeholder=\"Profession\" name=\"profession\" [formControl]=\"profession\">\n      </mat-form-field>\n\n\n    </div>\n\n\n\n  </div>\n\n  <div class=\"form-enter-button\" align=\"end\">\n    <button mat-raised-button color=\"primary\" (click)=\"submitNewPatient()\" class=\"enter-button\">Create</button>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1034,7 +1084,7 @@ module.exports = "<div class=\"form-container\">\n  <h1 class=\"form-title\">Cre
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-container {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  border: 1px solid black;\n  margin: 30px auto;\n  width: 95%; }\n\n.form-title {\n  margin-top: 30px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.form-input {\n  margin: 20px; }\n\n.split {\n  width: 100%; }\n\n.half {\n  width: 45%;\n  display: inline-block;\n  vertical-align: top; }\n\n.form-input-half {\n  margin: 20px;\n  width: 90%; }\n\n.age-preview {\n  width: 100%;\n  text-align: left; }\n\n.age-preview .age-years {\n    width: 45%;\n    margin-right: 10px; }\n\n.age-preview .age-months {\n    width: 45%; }\n\n.form-enter-button {\n  margin-right: 20px; }\n\n.enter-button {\n  width: 150px;\n  margin-left: 30px;\n  margin-bottom: 30px;\n  background: linear-gradient(to left, #2cadc8, #32c5bf); }\n"
+module.exports = ".form-container {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  border: 1px solid black;\n  margin: 30px auto;\n  width: 95%; }\n\n.form-title {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.form-input {\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.split {\n  width: 100%; }\n\n.half {\n  width: 50%;\n  display: inline-block;\n  vertical-align: top; }\n\n.form-input-half {\n  margin-right: 20px;\n  margin-left: 20px;\n  width: 90%; }\n\n.age-preview {\n  width: 100%;\n  text-align: left; }\n\n.age-preview .age-years {\n    width: 45%;\n    margin-right: 10px; }\n\n.age-preview .age-months {\n    width: 45%; }\n\n.form-enter-button {\n  margin-right: 20px; }\n\n.enter-button {\n  width: 150px;\n  margin-left: 30px;\n  margin-bottom: 30px;\n  background: linear-gradient(to left, #2cadc8, #32c5bf); }\n"
 
 /***/ }),
 
@@ -1102,11 +1152,13 @@ var NewPatientComponent = /** @class */ (function () {
             this.mobileNumber.hasError('mobileNumber') ? 'Not Valid Mobile Number' :
                 '';
     };
-    NewPatientComponent.prototype.changeAge = function () {
-        var dob = this.birthDate.value;
+    NewPatientComponent.prototype.changeAge = function (event) {
+        console.log(event.value);
+        var dob = moment__WEBPACK_IMPORTED_MODULE_2__(event.value);
         var now = moment__WEBPACK_IMPORTED_MODULE_2__();
         var diff = moment__WEBPACK_IMPORTED_MODULE_2__["duration"](now.diff(dob));
         this.ageYears = diff.years();
+        console.log(this.ageYears);
         this.ageMonths = diff.months();
     };
     NewPatientComponent.prototype.submitNewPatient = function () {
@@ -1243,9 +1295,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var SideNavComponent = /** @class */ (function () {
     function SideNavComponent() {
         this.menuItems = [
-            { title: 'Dashboard', link: '/dashboard', icon: 'dashboard' },
             { title: 'New Lab Visit', link: '/create/visit', icon: 'create' },
-            { title: 'New Patient', link: '/create/patient', icon: 'add' },
             { title: 'Visits Overview', link: '/visits', icon: 'book' },
         ];
     }
@@ -1296,6 +1346,9 @@ var TestsService = /** @class */ (function () {
     TestsService.prototype.getAllTestsCategories = function () {
         return this.http.get('https://mycare123.herokuapp.com/tests_categories');
     };
+    TestsService.prototype.getTestItems = function (id) {
+        return this.http.get("https://mycare123.herokuapp.com/tests/" + id);
+    };
     TestsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1309,6 +1362,56 @@ var TestsService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/visit.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/visit.service.ts ***!
+  \**********************************/
+/*! exports provided: VisitService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VisitService", function() { return VisitService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var VisitService = /** @class */ (function () {
+    function VisitService(http) {
+        this.http = http;
+    }
+    VisitService.prototype.postVisit = function (patientId, testIds, notes) {
+        return this.http.post('https://mycare123.herokuapp.com/visits', {
+            patient_id: patientId,
+            tests_ids: testIds,
+            notes: notes
+        });
+    };
+    VisitService.prototype.getVisits = function () {
+        return this.http.get('https://mycare123.herokuapp.com/visits');
+    };
+    VisitService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], VisitService);
+    return VisitService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/visits-overview/visits-overview.component.html":
 /*!****************************************************************!*\
   !*** ./src/app/visits-overview/visits-overview.component.html ***!
@@ -1316,7 +1419,7 @@ var TestsService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-container\">\n  <h1 class=\"pt-20 nomargin\" align=\"center\">Visits Overview</h1>\n  <!-- <h2 class=\"pl-20 nomargin\">Search Patient:</h2> -->\n\n  <div class=\"search-container\">\n    <mat-form-field class=\"pl-20 twothird\">\n      <input matInput placeholder=\"Enter Mobile Number...\" name=\"mobileNumber\">\n    </mat-form-field>\n\n    <div class=\"form-enter-button onethird\" align=\"end\" >\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Search</button>\n    </div>\n  </div>\n\n  <div class=\"table-container\">\n\n    <div class=\"mat-elevation-z8\">\n      <table mat-table [dataSource]=\"dataSource\">\n    \n        <!-- Position Column -->\n        <ng-container matColumnDef=\"id\">\n          <th mat-header-cell *matHeaderCellDef>Patient ID</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>\n        </ng-container>\n    \n        <!-- Name Column -->\n        <ng-container matColumnDef=\"name\">\n          <th mat-header-cell *matHeaderCellDef> Name </th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n        </ng-container>\n    \n        <!-- Weight Column -->\n        <ng-container matColumnDef=\"mobileNumber\">\n          <th mat-header-cell *matHeaderCellDef> Mobile Number  </th>\n          <td mat-cell *matCellDef=\"let element\"> 0{{element.mobileNumber}} </td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"visitDate\">\n          <th mat-header-cell *matHeaderCellDef> VisitDate  </th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.visitDate}} </td>\n        </ng-container>\n    \n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n      </table>\n    \n      <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n    </div>\n  </div>\n  \n  <div class=\"action-buttons-container\">\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\" >\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">View Visit</button>\n    </div>\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\" >\n      <button mat-raised-button color=\"primary\" class=\"enter-button\" [routerLink]=\"['enter-results']\">Enter Results</button>\n    </div>\n\n  </div>\n\n\n\n  </div>\n"
+module.exports = "<div class=\"form-container\">\n  <h1 class=\"pt-20 nomargin\" align=\"center\">Visits Overview</h1>\n  <!-- <h2 class=\"pl-20 nomargin\">Search Patient:</h2> -->\n\n  <div class=\"search-container\">\n    <mat-form-field class=\"pl-20 twothird\">\n      <input matInput placeholder=\"Enter Mobile Number...\" name=\"mobileNumber\">\n    </mat-form-field>\n\n    <div class=\"form-enter-button onethird\" align=\"end\" >\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">Search</button>\n    </div>\n  </div>\n\n  <div class=\"table-container\">\n\n    <div class=\"mat-elevation-z8\">\n      <table mat-table [dataSource]=\"dataSource\">\n    \n        <!-- Position Column -->\n        <ng-container matColumnDef=\"id\">\n          <th mat-header-cell *matHeaderCellDef>Visits ID</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element?.id}} </td>\n        </ng-container>\n    \n        <!-- Name Column -->\n        <ng-container matColumnDef=\"name\">\n          <th mat-header-cell *matHeaderCellDef> Name </th>\n          <td mat-cell *matCellDef=\"let element\"> {{element?.Patient?.name}} </td>\n        </ng-container>\n    \n        <!-- Weight Column -->\n        <ng-container matColumnDef=\"mobileNumber\">\n          <th mat-header-cell *matHeaderCellDef> Mobile Number  </th>\n          <td mat-cell *matCellDef=\"let element\"> {{element?.Patient?.mobile_number}} </td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"visitDate\">\n          <th mat-header-cell *matHeaderCellDef> VisitDate  </th>\n          <td mat-cell *matCellDef=\"let element\"> {{element?.created_at}} </td>\n        </ng-container>\n    \n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\" (click)=\"chooseVisit(row)\" [class.highlighted]=\"row.id === currentSelection\"></tr>\n      </table>\n    \n      <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n    </div>\n  </div>\n  \n  <div class=\"action-buttons-container\">\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\" >\n      <button mat-raised-button color=\"primary\" class=\"enter-button\">View Visit</button>\n    </div>\n\n    <div class=\"form-enter-button inline-block pt-20\" align=\"center\" >\n      <button mat-raised-button color=\"primary\" class=\"enter-button\" [routerLink]=\"['enter-results']\">Enter Results</button>\n    </div>\n\n  </div>\n\n\n\n  </div>\n"
 
 /***/ }),
 
@@ -1327,7 +1430,7 @@ module.exports = "<div class=\"form-container\">\n  <h1 class=\"pt-20 nomargin\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-container {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  border: 1px solid black;\n  margin: 10px auto;\n  width: 95%; }\n\n.table-container {\n  width: 95%;\n  margin: 0 auto; }\n\n.twothird {\n  width: 65%;\n  display: inline-block; }\n\n.onethird {\n  width: 25%;\n  display: inline-block; }\n\ntable {\n  width: 100%; }\n\n.form-title {\n  margin-top: 30px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.form-input {\n  margin: 20px; }\n\n.split {\n  width: 100%; }\n\n.half {\n  width: 45%;\n  display: inline-block;\n  vertical-align: top; }\n\n.form-input-half {\n  margin: 20px;\n  width: 90%; }\n\n.form-enter-button {\n  margin-right: 20px; }\n\n.enter-button {\n  width: 150px;\n  margin-left: 30px;\n  margin-bottom: 30px;\n  background: linear-gradient(to left, #2cadc8, #32c5bf); }\n\n.action-buttons-container {\n  float: right;\n  text-align: right; }\n"
+module.exports = ".highlighted {\n  background: silver !important; }\n\n.form-container {\n  display: flex;\n  flex-direction: column;\n  background: white;\n  border: 1px solid black;\n  margin: 10px auto;\n  width: 95%; }\n\n.table-container {\n  width: 95%;\n  margin: 0 auto; }\n\n.twothird {\n  width: 65%;\n  display: inline-block; }\n\n.onethird {\n  width: 25%;\n  display: inline-block; }\n\ntable {\n  width: 100%; }\n\n.form-title {\n  margin-top: 30px;\n  margin-right: 20px;\n  margin-left: 20px; }\n\n.form-input {\n  margin: 20px; }\n\n.split {\n  width: 100%; }\n\n.half {\n  width: 45%;\n  display: inline-block;\n  vertical-align: top; }\n\n.form-input-half {\n  margin: 20px;\n  width: 90%; }\n\n.form-enter-button {\n  margin-right: 20px; }\n\n.enter-button {\n  width: 150px;\n  margin-left: 30px;\n  margin-bottom: 30px;\n  background: linear-gradient(to left, #2cadc8, #32c5bf); }\n\n.action-buttons-container {\n  float: right;\n  text-align: right; }\n"
 
 /***/ }),
 
@@ -1345,6 +1448,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _visit_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../visit.service */ "./src/app/visit.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1357,13 +1461,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var VisitsOverviewComponent = /** @class */ (function () {
-    function VisitsOverviewComponent() {
+    function VisitsOverviewComponent(visitSerivce) {
+        this.visitSerivce = visitSerivce;
         this.displayedColumns = ["id", "name", "mobileNumber", "visitDate"];
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_0__["MatTableDataSource"](ELEMENT_DATA);
     }
     VisitsOverviewComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.dataSource.paginator = this.paginator;
+        this.visitSerivce.getVisits().subscribe(function (data) {
+            console.log(data);
+            _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_0__["MatTableDataSource"](data);
+        });
+    };
+    VisitsOverviewComponent.prototype.chooseVisit = function (row) {
+        console.log(row);
+        this.currentSelection = row.id;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_0__["MatPaginator"]),
@@ -1375,7 +1490,7 @@ var VisitsOverviewComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./visits-overview.component.html */ "./src/app/visits-overview/visits-overview.component.html"),
             styles: [__webpack_require__(/*! ./visits-overview.component.scss */ "./src/app/visits-overview/visits-overview.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_visit_service__WEBPACK_IMPORTED_MODULE_3__["VisitService"]])
     ], VisitsOverviewComponent);
     return VisitsOverviewComponent;
 }());
