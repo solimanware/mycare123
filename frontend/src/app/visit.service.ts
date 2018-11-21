@@ -18,4 +18,7 @@ export class VisitService {
   getVisits(){
     return this.http.get('https://mycare123.herokuapp.com/api/visits')
   }
+  getVisit(id){
+    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}`)
+  }
 }

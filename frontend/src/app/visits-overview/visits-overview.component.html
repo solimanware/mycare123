@@ -51,11 +51,15 @@
   <div class="action-buttons-container">
 
     <div class="form-enter-button inline-block pt-20" align="center" >
-      <button mat-raised-button color="primary" class="enter-button">View Visit</button>
+      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['/visits',patientId]" [disabled]="disabled">View Visit</button>
     </div>
 
     <div class="form-enter-button inline-block pt-20" align="center" >
-      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['enter-results']">Enter Results</button>
+      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['/visits',patientId,'enter-results']" [disabled]="disabled">Enter Results</button>
+    </div>
+
+    <div class="form-enter-button inline-block pt-20" align="center" >
+      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['enter-results']" [disabled]="disabled">Edit Results</button>
     </div>
 
   </div>

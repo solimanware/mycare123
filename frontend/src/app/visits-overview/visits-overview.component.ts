@@ -15,6 +15,8 @@ export class VisitsOverviewComponent implements OnInit {
   currentSelection;
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
+  disabled:boolean = true;
+  patientId:number;
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -26,7 +28,9 @@ export class VisitsOverviewComponent implements OnInit {
   }
   chooseVisit(row){
     console.log(row);
+    this.patientId = row.id;
     this.currentSelection = row.id;
+    this.disabled = false;
     
   }
 

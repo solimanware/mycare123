@@ -72,9 +72,12 @@ export class NewPatientComponent implements OnInit {
       mobileNumber:this.mobileNumber.value,
       gender:this.gender.value,
       email:this.email.value,
-      birthDate:this.birthDate.value,
+      birthDate:moment(this.birthDate.value,'YYYY-MM-DD HH:mm:ss'),
       profession:this.profession.value
     }
+
+    console.log(data.birthDate);
+    
     
     this.patientService.postPatient(data).subscribe(res=>{
       console.log(res);
