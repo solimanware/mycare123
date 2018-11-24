@@ -12,6 +12,7 @@ export class VisitDetailComponent implements OnInit {
   patient;
   categories;
   tests;
+  item;
   items;
   createdItems = [];
   notes;
