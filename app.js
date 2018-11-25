@@ -25,6 +25,8 @@ app.use('/api/tests_categories', require('./routes/tests_categories'));
 app.use('/api/tests', require('./routes/tests'));
 app.use('/api/tests_items', require('./routes/tests_items'));
 app.use('/api/visits', require('./routes/visits'));
+app.use('/api/items_results', require('./routes/items_results'));
+
 
 
 // app.use((req, res, next) => {

@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "b2dd2472980e51",
-    "password": "d53e4b4f",
-    "database": "heroku_88d7d9055e25873",
-    "host": "eu-cdbr-west-02.cleardb.net",
+    "username": "root",
+    "password": "",
+    "database": "mycare123",
+    "host": "localhost",
     "dialect": "mysql",
     "define":{
       "underscored": true

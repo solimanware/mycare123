@@ -1,21 +1,27 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('tests_items', {
+    return queryInterface.createTable('items_results_values', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      item_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'tests_items'
+        },
       },
-      normal_range: {
+      visit_test_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'visits_tests'
+        },
+      },
+      value: {
         type: Sequelize.TEXT
-      },
-      test_id: {
-        type: Sequelize.INTEGER
       },
       created_at: {
         allowNull: false,
@@ -28,6 +34,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('tests_items');
+    return queryInterface.dropTable('items_results_values');
   }
 };
