@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class DashboardComponent {
   mobileQuery: MediaQueryList;
+  cards = [];
 
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 

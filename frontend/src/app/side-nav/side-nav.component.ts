@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { BreakpointState, Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-side-nav',
@@ -10,8 +12,9 @@ import {map} from 'rxjs/operators';
 export class SideNavComponent implements OnInit {
 
   menuItems: {title: string, link: string, icon: string}[];
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(result => result.matches));
 
-  constructor() {
+  constructor(private breakpointObserver: BreakpointObserver) {
     this.menuItems = [
       {title: 'New Lab Visit', link: '/create/visit' , icon: 'create'},
       {title: 'Visits Overview', link: '/visits' , icon: 'book'},

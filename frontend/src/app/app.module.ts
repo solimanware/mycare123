@@ -19,6 +19,7 @@ import { VisitsOverviewComponent } from './visits-overview/visits-overview.compo
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppRoutes } from './app.routing';
 import { MOMENT_DATE_FORMATS, MomentDateAdapter } from './adabters/date';
+import { VisitDetailComponent } from './visit-detail/visit-detail.component';
 
 
 const routes: Routes = AppRoutes
@@ -33,7 +34,8 @@ const routes: Routes = AppRoutes
     NewLabVisitComponent,
     CreateNewLabVisitComponent,
     EnterTestResultsComponent,
-    VisitsOverviewComponent
+    VisitsOverviewComponent,
+    VisitDetailComponent
   ],
   imports: [
     BrowserModule,

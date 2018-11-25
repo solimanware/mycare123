@@ -11,7 +11,7 @@ export class PatientService {
     { }
 
     postPatient({name,mobileNumber,gender,birthDate,email,profession}) {
-      return this.http.post('https://mycare123.herokuapp.com/patients',{
+      return this.http.post('https://mycare123.herokuapp.com/api/patients',{
         name,
         mobile_number:mobileNumber,
         gender,
@@ -22,15 +22,15 @@ export class PatientService {
     }
 
     getAllPatients(){
-      return this.http.get('https://mycare123.herokuapp.com/patients')
+      return this.http.get('https://mycare123.herokuapp.com/api/patients')
     }
 
     searchPatientByMobile(mobile){
-      return this.http.get(`https://mycare123.herokuapp.com/patients/search/?mobile=${mobile}`)
+      return this.http.get(`https://mycare123.herokuapp.com/api/patients/search/?mobile=${mobile}`)
     }
 
     getPatientById(id){
-      return this.http.get(`https://mycare123.herokuapp.com/patients/${id}`)
+      return this.http.get(`https://mycare123.herokuapp.com/api/patients/${id}`)
     }
     
 }
