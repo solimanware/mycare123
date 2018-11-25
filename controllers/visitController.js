@@ -4,8 +4,65 @@ const VisitsTests = require('../models').visits_tests;
 const Tests = require('../models').tests;
 const ItemsResultsValue = require('../models').items_results_value;
 const TestItem =  require('../models').tests_items;
+const sequelize = require('../models').sequelize;
+
+
+//HELPERS
+
+function updateRow(id, value) {
+    return ItemsResultsValue.update(
+      {
+        value,
+      },
+      {
+        where: { id },
+      }
+    );
+  }
+
+
+  function buildRowPromises(arr) {
+    return arr.map((obj) => updateRow(obj.id, obj.value));
+  }
+  
 module.exports = {
 
+    updateResults: (request, response) => {
+
+        let data = request.body;
+
+
+        return Promise.all(buildRowPromises(data)).then(res => {
+            response.status(200).send('done')
+
+        }).catch(e => {
+            console.log('error:    ', e)
+        })
+
+    }
+
+    ,    findResultsByVisitId: (request, response) => {
+
+        const id = request.params.id;
+        // Get results for this vist
+         sequelize.query(`
+            SELECT 
+            items_results_values.id, items_results_values.value, tests_items.name as item_name, 
+            items_results_values.item_id, tests.name as test_name
+            FROM items_results_values 
+            inner join visits_tests on items_results_values.visit_test_id = visits_tests.id
+            inner join visits on visits_tests.visit_id = visits.id
+            inner join tests_items on items_results_values.item_id = tests_items.id
+            inner join tests on visits_tests.test_id = tests.id
+            where visits.id = ${id}
+
+         `) .then(res => {
+            // We don't need spread here, since only the results will be returned for select queries
+            response.status(200).send(res)
+          })
+
+
+    },
     create: (request, response) => {
         request.body.created_at = new Date();
         request.body.updated_at = new Date();

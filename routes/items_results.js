@@ -7,7 +7,6 @@ const router = express.Router();
 router.get('/', itemsResultController.findAll);
 
 
-router.get('/visit/{visit_id}`', itemsResultController.findAllByVisit);
 router.get('/:id', itemsResultController.findById);
 
 router.post('/', itemsResultController.create);
