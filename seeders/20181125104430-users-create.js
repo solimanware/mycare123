@@ -14,7 +14,8 @@ module.exports = {
     */
 
    return queryInterface.bulkInsert('users', [
-      {mobile_number: "01001234567", name: "Osama", password: "$2b$10$ojVcm37C1hsJRqilihlE/ukmQjpiko1UxswWeCNS423Csx5vQn.6u"},
+      {mobile_number: "01001234567", name: "Osama", password: "$2b$10$ojVcm37C1hsJRqilihlE/ukmQjpiko1UxswWeCNS423Csx5vQn.6u",
+    created_at: new Date(), updated_at: new Date()},
    ], {});
   },
 
