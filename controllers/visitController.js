@@ -1,3 +1,4 @@
+const _ = require('underscore');
 const Visit = require('../models').visits;
 const Patient = require('../models').patients;
 const VisitsTests = require('../models').visits_tests;
@@ -5,6 +6,7 @@ const Tests = require('../models').tests;
 const ItemsResultsValue = require('../models').items_results_value;
 const TestItem =  require('../models').tests_items;
 const sequelize = require('../models').sequelize;
+const genenrateVisitReport = require('../helpers/genenrate-visit-report');
 
 
 //HELPERS
@@ -39,9 +41,57 @@ module.exports = {
             console.log('error:    ', e)
         })
 
-    }
+    },   
+    findResultsReportByVisitId: (request, response) => {
 
-    ,    findResultsByVisitId: (request, response) => {
+        const id = request.params.id;
+        // Get results for this vist
+         sequelize.query(`
+            SELECT distinct
+            items_results_values.id, items_results_values.value, tests_items.name as item_name, 
+            items_results_values.item_id, tests.name as test_name, visits_tests.test_id as test_id,
+            visits.created_at as visit_created_at, patients.name as patient_name, patients.gender as patient_gender,
+            tests_items.normal_range as item_normal_range
+            FROM items_results_values 
+            inner join visits_tests on items_results_values.visit_test_id = visits_tests.id
+            inner join visits on visits_tests.visit_id = visits.id
+            inner join patients on patients.id = visits.patient_id
+            inner join tests_items on items_results_values.item_id = tests_items.id
+            inner join tests on visits_tests.test_id = tests.id
+            where visits.id = ${id}
+
+         `) .then(res => {
+            
+            // Use res[0] not res becsues res array have duplicated date
+            const newResults = groupBy(res[0], "test_id");
+
+            function groupBy(arr, key){
+                let newArr = {};
+            
+                arr.forEach(element => {
+                    if(newArr[element.test_id] && newArr[element.test_id] instanceof Array){
+                        newArr[element.test_id].push(element);
+                    }else{
+                        newArr[element.test_id] = [element];            
+                    }
+                });
+
+                return newArr;
+            }
+            
+            // We don't need spread here, since only the results will be returned for select queries
+            genenrateVisitReport(newResults, id).then(res => {
+
+                response.status(200).send(res)
+            });
+
+                // response.status(200).send(newResults)
+ 
+          })
+
+
+    },
+    findResultsByVisitId: (request, response) => {
 
         const id = request.params.id;
         // Get results for this vist
