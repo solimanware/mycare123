@@ -5,6 +5,7 @@ import { PatientService } from 'src/app/providers/patient.service';
 import { NavigationService } from 'src/app/providers/navigation.service';
 import { TestsService } from 'src/app/providers/tests.service';
 import { VisitService } from 'src/app/providers/visit.service';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-new-lab-visit',
@@ -28,15 +29,27 @@ export class CreateVisitComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(({ id }) => {
-      this.patientService.getPatientById(id).subscribe(patient => {
+      this.patientService.getPatientById(id).subscribe((patient:any) => {
         this.patient = patient;
+        this.patient['age'] = this.getAge(patient.birth_date)
       })
       //this.patient = data;
       // console.log(this.patient);
     })
     this.getTestsCategories();
   }
+  getAge(value){
+    let dob = moment(value)    
+    let now = moment()
 
+    let diff = moment.duration(now.diff(dob))
+
+    let ageYears = diff.years()
+    
+    let ageMonths = diff.months();
+
+    return `${ageYears} years, ${ageMonths} months`
+  }
 
   createNewVisit(){
     console.log(this.patient["id"],this.testIds,this.notes);
@@ -98,6 +111,9 @@ export class CreateVisitComponent implements OnInit {
     console.log($event.value);
     
     this.createdItems.push($event.value)
+  }
+  goVisitsOverview(){
+    this.navigation.goToVisitsOverview();
   }
 
 }

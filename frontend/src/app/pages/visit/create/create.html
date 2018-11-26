@@ -15,8 +15,8 @@
       <p>Mobile Number: <span>{{patient?.mobile_number}}</span></p>
       <p>Gender: {{patient?.gender}}</p>
       <p>E-mail: {{patient?.email}}</p>
-      <p>Birth date: {{patient?.birth_date}}</p>
-      <p>Age: > to be calculated</p>
+      <p>Birth date: {{patient?.birth_date | date:'dd/MM/yyyy'}}</p>
+      <p>Age: {{patient?.age}}</p>
     </div>
 
     <div class="add-labs-container">
@@ -68,7 +68,7 @@
       <button mat-raised-button color="primary" class="enter-button">Create Lab Visit</button>
     </div>
 
-    <div class="form-enter-button inline-block pt-20" align="center">
+    <div class="form-enter-button inline-block pt-20" align="center" (click)="goVisitsOverview()">
       <button mat-raised-button color="primary" class="enter-button">Discard</button>
     </div>
 
