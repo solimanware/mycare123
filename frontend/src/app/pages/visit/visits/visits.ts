@@ -67,10 +67,13 @@ export class VisitsOverviewComponent implements OnInit {
     this.navigation.goToViewVistDetail(id)
   }
   enterResults(id){
-    this.navigation.goToEnterVisitResults(id)
+    this.navigation.goToCreateVisitResults(id)
   }
   editResult(id){
-    this.navigation.goToEnterVisitResults(id)
+    this.navigation.goToEditVisitResults(id)
+  }
+  viewResults(id){
+    this.navigation.goToViewVisitResults(id)
   }
 
 

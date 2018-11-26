@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import * as moment from 'moment';
 import { PatientService } from 'src/app/providers/patient.service';
+import { NavigationService } from 'src/app/providers/navigation.service';
+import { NavigationExtras } from '@angular/router';
 
 const mobileRegEx = /^[0]\d{10}$/;
 
@@ -26,7 +28,7 @@ export class NewPatientComponent implements OnInit {
   confirmMobileNumber = new FormControl('',[Validators.pattern(mobileRegEx)])
   ageYears:number = 0;
   ageMonths:number = 0;
-  constructor(private patientService:PatientService) { }
+  constructor(private patientService:PatientService,private navigation:NavigationService) { }
 
   ngOnInit() {
   }
@@ -79,8 +81,14 @@ export class NewPatientComponent implements OnInit {
     console.log(data.birthDate);
     
     
-    this.patientService.postPatient(data).subscribe(res=>{
+    this.patientService.postPatient(data).subscribe((res:any)=>{
       console.log(res);
+      let params: NavigationExtras = {
+        queryParams: {
+            "id": res.id
+        }
+      };
+      this.navigation.goToCreateNewVisit(params)
     })
   }
 }

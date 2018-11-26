@@ -1,0 +1,79 @@
+<div class="create-visit-container">
+
+  <h1 align="center">Create New Lab Visit And Add Required Tests</h1>
+
+  <!-- <div class="visit-header">
+    <h2 class="inline-block pl-20 pr-20">Laboratory Visit ID: 25</h2>
+    <h2 class="inline-block pr-20 pl-20">Visit Date: 31/10/2018</h2>
+    <h2 class="inline-block pr-20 pl-20">Visit Time: 8:00 PM</h2>
+  </div> -->
+
+  <div class="main-container">
+    <div class="paient-info-container">
+      <h2>Patient Data:</h2>
+      <p>Name: <span>{{patient?.name}}</span></p>
+      <p>Mobile Number: <span>{{patient?.mobile_number}}</span></p>
+      <p>Gender: {{patient?.gender}}</p>
+      <p>E-mail: {{patient?.email}}</p>
+      <p>Birth date: {{patient?.birth_date | date:'dd/MM/yyyy'}}</p>
+      <p>Age: {{patient?.age}}</p>
+    </div>
+
+    <div class="add-labs-container">
+      <h2>Add Labs:</h2>
+      <mat-form-field class="tests-container">
+        <mat-select placeholder="Choose Test Category" (selectionChange)="chooseTestName($event)">
+          <mat-option *ngFor="let category of categories" [value]="category.name" >
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="tests-container">
+        <mat-select placeholder="Choose Test Name" (selectionChange)="chooseItem($event)">
+          <mat-option *ngFor="let test of tests" [value]="test.name">
+            {{test.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="tests-container">
+        <mat-select placeholder="Choose Test Item" (selectionChange)="createNewTestItem($event)">
+          <mat-option *ngFor="let item of items" [value]="item.name">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h3>LabNames:</h3>
+      <div class="tests-container">
+
+        <div class="test-container" *ngFor="let item of createdItems;let i=index">
+          {{item}} <button mat-raised-button color="primary" class="remove-button" (click)="createdItems.splice(i,1)">Remove</button>
+
+        </div>
+      </div>
+
+      <div class="pb-20">
+
+        <h3 class="nomargin">Notes:</h3>
+        <textarea class="notes-area nopadding" name="notes" id="notes" cols="90" rows="6" [(ngModel)]="notes"></textarea>
+      </div>
+
+    </div>
+  </div>
+  <div class="action-buttons-container">
+
+    <div class="form-enter-button inline-block pt-20" align="center" (click)="createNewVisit()">
+      <button mat-raised-button color="primary" class="enter-button">Create Lab Visit</button>
+    </div>
+
+    <div class="form-enter-button inline-block pt-20" align="center" (click)="goVisitsOverview()">
+      <button mat-raised-button color="primary" class="enter-button">Discard</button>
+    </div>
+
+  </div>
+
+
+
+</div>

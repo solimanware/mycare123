@@ -8,10 +8,10 @@ import { TestsService } from 'src/app/providers/tests.service';
 
 @Component({
   selector: 'app-enter-test-results',
-  templateUrl: './results.html',
-  styleUrls: ['./results.scss']
+  templateUrl: './create.html',
+  styleUrls: ['./create.scss']
 })
-export class EnterTestResultsComponent implements OnInit {
+export class CreateResultsComponent implements OnInit {
 
   patientId: number;
   visit: any;
@@ -63,6 +63,21 @@ export class EnterTestResultsComponent implements OnInit {
   }
   submitTestResults(){
     console.log(this.results);
+    let arr = [];
+    for(let result in this.results){
+      arr.push({
+        id:result,
+        value:this.results[result]
+      })
+    }
+    console.log(arr);
+    console.log(this.visit.id);
+    
+    this.visitService.patchResult(this.visit.id,arr).subscribe(res=>{
+      console.log(res);
+    })
+    
+    
     
   }
 

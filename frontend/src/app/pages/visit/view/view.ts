@@ -5,10 +5,10 @@ import { VisitService } from 'src/app/providers/visit.service';
 
 @Component({
   selector: 'app-visit-detail',
-  templateUrl: './visit-detail.component.html',
-  styleUrls: ['./visit-detail.component.scss']
+  templateUrl: './view.html',
+  styleUrls: ['./view.scss']
 })
-export class VisitDetailComponent implements OnInit {
+export class ViewVisitComponent implements OnInit {
   patientId:number;
   patient;
   categories;

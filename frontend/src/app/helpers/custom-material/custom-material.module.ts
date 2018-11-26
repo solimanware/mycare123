@@ -39,6 +39,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  MAT_DATE_LOCALE,
 } from '@angular/material';
 
 @NgModule({
@@ -81,7 +82,7 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    ScrollingModule,
+    ScrollingModule
   ]
 })
 export class CustomMaterialModule { }

@@ -6,10 +6,10 @@ import { NavigationService } from 'src/app/providers/navigation.service';
 
 @Component({
   selector: 'app-new-lab-visit',
-  templateUrl: './add.html',
-  styleUrls: ['./add.scss']
+  templateUrl: './patients.html',
+  styleUrls: ['./patients.scss']
 })
-export class NewLabVisitComponent implements OnInit {
+export class PatientsOverviewComponent implements OnInit {
   patients = [];
   rememberedState: any;
   constructor(private patientService: PatientService,private router: Router,private navigation:NavigationService) { }
@@ -45,7 +45,11 @@ export class NewLabVisitComponent implements OnInit {
     };
     this.navigation.goToCreateNewVisit(params)
   }
+
   goToCreateNewPatientPage(){
+    this.navigation.goToCreateNewPatient();
+  }
+  createPatient(){
     this.navigation.goToCreateNewPatient();
   }
 }
