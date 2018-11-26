@@ -35,7 +35,9 @@ module.exports = {
 
 
         return Promise.all(buildRowPromises(data)).then(res => {
-            response.status(200).send('done')
+            response.status(200).json({
+                error: false
+            })
 
         }).catch(e => {
             console.log('error:    ', e)
@@ -98,7 +100,8 @@ module.exports = {
          sequelize.query(`
             SELECT 
             items_results_values.id, items_results_values.value, tests_items.name as item_name, 
-            items_results_values.item_id, tests.name as test_name
+            items_results_values.item_id, tests.name as test_name, tests_items.normal_range as item_normal_range,
+            tests.id as test_id
             FROM items_results_values 
             inner join visits_tests on items_results_values.visit_test_id = visits_tests.id
             inner join visits on visits_tests.visit_id = visits.id
@@ -108,7 +111,7 @@ module.exports = {
 
          `) .then(res => {
             // We don't need spread here, since only the results will be returned for select queries
-            response.status(200).send(res)
+            response.status(200).send(res[0])
           })
 
 
