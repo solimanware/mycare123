@@ -9,7 +9,13 @@ router.post('/', visitController.create);
 
 router.get('/:id', visitController.findById);
 
+router.get('/:id/results', visitController.findResultsByVisitId);
+
+
 router.patch('/:id', visitController.update);
+
+router.patch('/:id/results', visitController.updateResults);
+
 
 router.delete('/:id', visitController.delete);
 

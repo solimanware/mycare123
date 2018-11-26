@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Patient = sequelize.define('Patient', {
+  const Patient = sequelize.define('patients', {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     gender: DataTypes.STRING,
@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE,
   }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true,
+
   });
   Patient.associate = function(models) {
     // associations can be defined here

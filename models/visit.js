@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined 
     
     // Patient
-    Visit.belongsTo(models.Patient, {foreignKey: 'patient_id'});
+    Visit.belongsTo(models.patients, {foreignKey: 'patient_id'});
 
     // Tests
     Visit.belongsToMany(models.tests, {through: models.visits_tests, foreignKey: 'visit_id'});

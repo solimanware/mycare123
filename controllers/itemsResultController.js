@@ -29,6 +29,7 @@ module.exports = {
     },
     
     findById:  (request, response)  => {
+        console.log('findById')
         Patient.findById(request.params.id,{
             include:[{model: Visit}]
         })
@@ -39,7 +40,10 @@ module.exports = {
             response.status(500).send(error);
         });
     },
+    findAllByVisit: () => {
+        console.log('findAllByVisit')
 
+    },
     search:  (request, response)  => {
         const mobileNumber = request.query.mobile;
 
