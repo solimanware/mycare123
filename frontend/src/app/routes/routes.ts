@@ -8,6 +8,7 @@ import { CreateVisitComponent } from "../pages/visit/create/create";
 import { ViewVisitComponent } from "../pages/visit/view/view";
 import { ViewResultsComponent } from "../pages/result/view/view";
 import { EditResultsComponent } from "../pages/result/edit/edit";
+import { PatientsOverviewComponent } from "../pages/patient/patients/patients";
 
 
 export const AppRoutes: Routes = [
@@ -18,7 +19,7 @@ export const AppRoutes: Routes = [
     { path: 'visits/:id/edit', component: EditVisitComponent },
     { path: 'visits/:id/results/edit', component: EditResultsComponent },
     { path: 'visits/:id/results/view', component: ViewResultsComponent },
-    { path: 'patients', component: VisitsOverviewComponent },
+    { path: 'patients', component: PatientsOverviewComponent },
     { path: 'patients/create', component: NewPatientComponent },
     { path: 'login', component: LoginComponent },
     { path: 'dashboard', component: DashboardComponent },

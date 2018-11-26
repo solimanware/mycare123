@@ -9,10 +9,10 @@ export class NavigationService {
   constructor(private router: Router) { }
 
   goToCreateNewVisit(params?): void {
-    this.router.navigate(['visits/new'], params)
+    this.router.navigate(['visits','create'], params)
   }
   goToCreateNewPatient(params?): void {
-    this.router.navigate(['patients/new'], params)
+    this.router.navigate(['patients','create'], params)
   }
   goToVisitsOverview(params?): void {
     this.router.navigate(['visits'], params)
@@ -26,7 +26,6 @@ export class NavigationService {
   goToCreateVisitResults(id):void{
     this.router.navigate(['visits/',id,'results','create'])
   }
-  
   goToViewVisitResults(id):void{
     this.router.navigate(['visits/',id,'results','view'])
   }

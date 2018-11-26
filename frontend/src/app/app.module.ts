@@ -20,6 +20,7 @@ import { CreateVisitComponent } from './pages/visit/create/create';
 import { EditVisitComponent } from './pages/visit/edit/edit';
 import { CreateResultsComponent } from './pages/result/create/create';
 import { EditResultsComponent } from './pages/result/edit/edit';
+import { PatientsOverviewComponent } from './pages/patient/patients/patients';
 
 
 const routes: Routes = AppRoutes
@@ -37,7 +38,8 @@ const routes: Routes = AppRoutes
     ViewVisitComponent,
     CreateResultsComponent,
     EditResultsComponent,
-    ViewResultsComponent
+    ViewResultsComponent,
+    PatientsOverviewComponent
   ],
   imports: [
     BrowserModule,
