@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PatientService } from '../patient.service';
-import { TestsService } from '../tests.service';
-import { VisitService } from '../visit.service';
+import { PatientService } from 'src/app/providers/patient.service';
+import { TestsService } from 'src/app/providers/tests.service';
+import { VisitService } from 'src/app/providers/visit.service';
 
 @Component({
   selector: 'app-create-new-lab-visit',
-  templateUrl: './create-new-lab-visit.component.html',
-  styleUrls: ['./create-new-lab-visit.component.scss']
+  templateUrl: './edit.html',
+  styleUrls: ['./edit.scss']
 })
 export class CreateNewLabVisitComponent implements OnInit {
   patient;

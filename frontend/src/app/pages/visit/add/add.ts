@@ -1,17 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { PatientService } from '../patient.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { PatientService } from 'src/app/providers/patient.service';
+import { NavigationService } from 'src/app/providers/navigation.service';
 
 @Component({
   selector: 'app-new-lab-visit',
-  templateUrl: './new-lab-visit.component.html',
-  styleUrls: ['./new-lab-visit.component.scss']
+  templateUrl: './add.html',
+  styleUrls: ['./add.scss']
 })
 export class NewLabVisitComponent implements OnInit {
   patients = [];
   rememberedState: any;
-  constructor(private patientService: PatientService,private router: Router) { }
+  constructor(private patientService: PatientService,private router: Router,private navigation:NavigationService) { }
 
   displayedColumns: string[] = ['id', 'name', 'mobile_number','buttons'];
   dataSource = new MatTableDataSource<any>([]);
@@ -35,13 +36,17 @@ export class NewLabVisitComponent implements OnInit {
       this.dataSource = this.rememberedState;
     }
   }
+  
   createNewVisit(patient){
-    let navigationExtras: NavigationExtras = {
+    let params: NavigationExtras = {
       queryParams: {
           "id": patient.id
       }
     };
-    this.router.navigate(['/create/visit/new'],navigationExtras)
+    this.navigation.goToCreateNewVisit(params)
+  }
+  goToCreateNewPatientPage(){
+    this.navigation.goToCreateNewPatient();
   }
 }
 

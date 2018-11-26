@@ -16,7 +16,7 @@ export class SideNavComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this.menuItems = [
-      {title: 'New Lab Visit', link: '/create/visit' , icon: 'create'},
+      {title: 'New Lab Visit', link: '/patients' , icon: 'edit'},
       {title: 'Visits Overview', link: '/visits' , icon: 'book'},
     ];
   }

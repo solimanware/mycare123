@@ -1,3 +1,4 @@
+
 <div class="form-container">
   <h1 class="pt-20 nomargin" align="center">Create New Lab Visit</h1>
   <!-- <h2 class="pl-20 nomargin">Search Patient:</h2> -->
@@ -54,7 +55,7 @@
   
   <div class="action-buttons-container">
     <div class="form-enter-button inline-block pt-20" align="center" >
-      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['/create/patient']">Create New Patient</button>
+      <button mat-raised-button color="primary" class="enter-button" (click)="goToCreateNewPatientPage()">Create New Patient</button>
     </div>
   </div>
 

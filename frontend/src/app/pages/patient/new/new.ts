@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import * as moment from 'moment';
-import { PatientService } from '../patient.service';
+import { PatientService } from 'src/app/providers/patient.service';
 
 const mobileRegEx = /^[0]\d{10}$/;
 
 @Component({
   selector: 'app-new-patient',
-  templateUrl: './new-patient.component.html',
-  styleUrls: ['./new-patient.component.scss']
+  templateUrl: './new.html',
+  styleUrls: ['./new.scss']
 })
 export class NewPatientComponent implements OnInit {
   genders = [
