@@ -63,6 +63,21 @@ export class EnterTestResultsComponent implements OnInit {
   }
   submitTestResults(){
     console.log(this.results);
+    let arr = [];
+    for(let result in this.results){
+      arr.push({
+        id:result,
+        value:this.results[result]
+      })
+    }
+    console.log(arr);
+    console.log(this.visit.id);
+    
+    this.visitService.patchResult(this.visit.id,arr).subscribe(res=>{
+      console.log(res);
+    })
+    
+    
     
   }
 

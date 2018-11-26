@@ -21,4 +21,7 @@ export class VisitService {
   getVisit(id){
     return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}`)
   }
+  patchResult(id,body){
+    return this.http.patch(`https://mycare123.herokuapp.com/api/visits/${id}/results`,JSON.stringify(body))
+  }
 }
