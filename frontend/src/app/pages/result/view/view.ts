@@ -16,9 +16,10 @@ export class ViewResultsComponent implements OnInit {
   patientId: number;
   visit: any;
   patient: any;
-  tests:any;
+  tests: any;
   currentSelection: any;
   results = {};
+  resultsArr = [];
 
   constructor(
     private patientService: PatientService,
@@ -27,11 +28,11 @@ export class ViewResultsComponent implements OnInit {
     private navigation: NavigationService,
     private route: ActivatedRoute) { }
 
-  displayedColumns: string[] = ['id', 'name', 'test_result', 'normal_range'];
+  displayedColumns: string[] = ['id', 'item_name', 'value', 'item_normal_range'];
   dataSource = new MatTableDataSource<any>([]);
-  
-  
-  displayedRequiredTestsColumns: string[] = ['name','id','status']
+
+
+  displayedRequiredTestsColumns: string[] = ['name', 'id']
   testNamesSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -46,52 +47,37 @@ export class ViewResultsComponent implements OnInit {
         this.patient["age"] = this.getAge(this.patient.birth_date)
         this.tests = visit.tests
         this.testNamesSource = new MatTableDataSource<any>(this.tests);
+        this.visitService.getVisitResults(this.visit.id).subscribe((res: any) => {
+          console.log(res);
+          this.resultsArr = res;
+        })
       })
     })
   }
 
-  editTestItems(id){
+  editTestItems(id) {
     console.log(id);
     this.currentSelection = id;
-    
-    this.testService.getTestItems(id).subscribe((items:any)=>{
-      console.log(items);
-      console.log(items.tests_items);
-      
-      this.dataSource =  new MatTableDataSource<any>(items.tests_items);
-    })
+    const testItems = this.resultsArr.filter(item => item.test_id == id)
+    this.dataSource = new MatTableDataSource<any>(testItems);
   }
-  submitTestResults(){
-    console.log(this.results);
-    let arr = [];
-    for(let result in this.results){
-      arr.push({
-        id:result,
-        value:this.results[result]
-      })
-    }
-    console.log(arr);
-    console.log(this.visit.id);
+  printVisit(){
+    console.log('printing');
     
-    this.visitService.patchResult(this.visit.id,arr).subscribe(res=>{
-      console.log(res);
-    })
-    
-    
-    
+    this.visitService.printVisitPDF(this.visit.id)
   }
   editResults(){
     this.navigation.goToEditVisitResults(this.visit.id)
   }
 
-  getAge(value){
-    let dob = moment(value)    
+  getAge(value) {
+    let dob = moment(value)
     let now = moment()
 
     let diff = moment.duration(now.diff(dob))
 
     let ageYears = diff.years()
-    
+
     let ageMonths = diff.months();
 
     return `${ageYears} years, ${ageMonths} months`

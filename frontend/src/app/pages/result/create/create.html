@@ -37,10 +37,10 @@
             </ng-container>
           
             <!-- Symbol Column -->
-            <ng-container matColumnDef="status">
+            <!-- <ng-container matColumnDef="status">
               <th mat-header-cell *matHeaderCellDef> Entry Status </th>
               <td mat-cell *matCellDef="let element"> Not yet </td>
-            </ng-container>
+            </ng-container> -->
           
             <tr mat-header-row *matHeaderRowDef="displayedRequiredTestsColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedRequiredTestsColumns;" (click)="editTestItems(row.id)" [class.highlighted]="row.id === currentSelection" ></tr>
@@ -63,21 +63,21 @@
             </ng-container>
 
 
-            <ng-container matColumnDef="name">
+            <ng-container matColumnDef="item_name">
               <th mat-header-cell *matHeaderCellDef> Item name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.item_name}} </td>
             </ng-container>
 
 
-            <ng-container matColumnDef="testResult">
+            <ng-container matColumnDef="value">
               <th mat-header-cell *matHeaderCellDef> Result </th>
               <td mat-cell *matCellDef="let element"> <input class="test-result" type="text" [(ngModel)]="results[element.id]"> </td>
             </ng-container>
 
 
-            <ng-container matColumnDef="normal_range">
+            <ng-container matColumnDef="item_normal_range">
               <th mat-header-cell *matHeaderCellDef> Normal Range </th>
-              <td mat-cell *matCellDef="let element"> {{element.normal_range}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.item_normal_range}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
