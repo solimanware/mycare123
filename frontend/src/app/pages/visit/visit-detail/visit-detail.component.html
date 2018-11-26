@@ -1,6 +1,6 @@
 <div class="create-visit-container">
 
-  <h1 align="center">Create New Lab Visit And Add Required Tests</h1>
+  <h1 align="center">View Visit Details</h1>
 
   <!-- <div class="visit-header">
     <h2 class="inline-block pl-20 pr-20">Laboratory Visit ID: 25</h2>
@@ -15,15 +15,15 @@
       <p>Mobile Number: <span>{{patient?.mobile_number}}</span></p>
       <p>Gender: {{patient?.gender}}</p>
       <p>E-mail: {{patient?.email}}</p>
-      <p>Birth date: {{patient?.birth_date}}</p>
-      <p>Age: > to be calculated</p>
+      <p>Birth date: {{patient?.birth_date | date:'dd/MM/yyyy'}}</p>
+      <p>Age: {{patient?.age}}</p>
     </div>
     <div class="right-container">
-      <div>
+      <!-- <div>
         {{item.name}} <button mat-raised-button color="primary" class="green" (click)="toggleAddLabs()">Add new
           labs</button>
 
-      </div>
+      </div> -->
       <div>
         <div *ngIf="addLabsEnabled">
           <h2>Add Labs:</h2>
@@ -57,7 +57,7 @@
         <div class="tests-container">
 
           <div class="test-container" *ngFor="let item of createdItems;let i=index">
-            {{item.name}} <button mat-raised-button color="primary" class="remove-button" (click)="createdItems.splice(i,1)">Remove</button>
+            {{item.name}} <!-- <button mat-raised-button color="primary" class="remove-button" (click)="createdItems.splice(i,1)">Remove</button> -->
 
           </div>
         </div>
@@ -78,11 +78,8 @@
   <div class="action-buttons-container">
 
     <div class="form-enter-button inline-block pt-20" align="center">
-      <button mat-raised-button color="primary" class="enter-button">Save</button>
+      <button mat-raised-button color="primary" class="enter-button">Edit</button>
     </div>
 
-    <div class="form-enter-button inline-block pt-20" align="center">
-      <button mat-raised-button color="primary" class="enter-button">Discard</button>
-    </div>
 
   </div>

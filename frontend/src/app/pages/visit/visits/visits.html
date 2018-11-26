@@ -4,10 +4,10 @@
 
   <div class="search-container">
     <mat-form-field class="pl-20 twothird">
-      <input matInput placeholder="Enter Mobile Number..." name="mobileNumber">
+      <input matInput placeholder="Enter Mobile Number..." name="mobileNumber" [(ngModel)]="search" (input)="doSearch()">
     </mat-form-field>
 
-    <div class="form-enter-button onethird" align="end" >
+    <div class="form-enter-button onethird" align="end">
       <button mat-raised-button color="primary" class="enter-button">Search</button>
     </div>
   </div>
@@ -16,54 +16,57 @@
 
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
-    
+
         <!-- Position Column -->
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>Visits ID</th>
           <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
         </ng-container>
-    
+
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element?.Patient?.name}} </td>
+          <td mat-cell *matCellDef="let element"> {{element?.patient?.name}} </td>
         </ng-container>
-    
+
         <!-- Weight Column -->
         <ng-container matColumnDef="mobileNumber">
-          <th mat-header-cell *matHeaderCellDef> Mobile Number  </th>
-          <td mat-cell *matCellDef="let element"> {{element?.Patient?.mobile_number}} </td>
+          <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+          <td mat-cell *matCellDef="let element"> {{element?.patient?.mobile_number}} </td>
         </ng-container>
 
         <ng-container matColumnDef="visitDate">
-          <th mat-header-cell *matHeaderCellDef> VisitDate  </th>
-          <td mat-cell *matCellDef="let element"> {{element?.created_at}} </td>
+          <th mat-header-cell *matHeaderCellDef> VisitDate </th>
+          <td mat-cell *matCellDef="let element"> {{element?.created_at | date:'dd/MM/yyyy'}} </td>
         </ng-container>
-    
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="chooseVisit(row)" [class.highlighted]="row.id === currentSelection"></tr>
       </table>
-    
+
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
   </div>
-  
+
   <div class="action-buttons-container">
 
-    <div class="form-enter-button inline-block pt-20" align="center" >
-      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['/visits',patientId]" [disabled]="disabled">View Visit</button>
+    <div class="form-enter-button inline-block pt-20" align="center">
+      <button mat-raised-button color="primary" class="enter-button" (click)="viewVisit(patientId)" [disabled]="disabled">View
+        Visit</button>
     </div>
 
-    <div class="form-enter-button inline-block pt-20" align="center" >
-      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['/visits',patientId,'enter-results']" [disabled]="disabled">Enter Results</button>
+    <div class="form-enter-button inline-block pt-20" align="center">
+      <button mat-raised-button color="primary" class="enter-button" (click)="enterResults(patientId)" [disabled]="disabled">Enter
+        Results</button>
     </div>
 
-    <div class="form-enter-button inline-block pt-20" align="center" >
-      <button mat-raised-button color="primary" class="enter-button" [routerLink]="['enter-results']" [disabled]="disabled">Edit Results</button>
+    <div class="form-enter-button inline-block pt-20" align="center">
+      <button mat-raised-button color="primary" class="enter-button" (click)="editResult(patientId)" [disabled]="disabled">View
+        Results</button>
     </div>
 
   </div>
 
 
 
-  </div>
+</div>

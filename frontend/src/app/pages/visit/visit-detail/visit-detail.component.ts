@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { VisitService } from '../visit.service';
+import * as moment from 'moment'
+import { VisitService } from 'src/app/providers/visit.service';
 
 @Component({
   selector: 'app-visit-detail',
@@ -24,7 +25,8 @@ export class VisitDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.patientId = +params['id']; // (+) converts string 'id' to a number
       this.visit.getVisit(this.patientId).subscribe((res:any)=>{
-        this.patient = res.Patient;
+        this.patient = res.patient;
+        this.patient["age"] = this.getAge(res.patient.birth_date)
         console.log(res);
         this.createdItems = res.tests
         console.log(res.tests);
@@ -34,6 +36,19 @@ export class VisitDetailComponent implements OnInit {
         
       })
    });
+  }
+
+  getAge(value){
+    let dob = moment(value)    
+    let now = moment()
+
+    let diff = moment.duration(now.diff(dob))
+
+    let ageYears = diff.years()
+    
+    let ageMonths = diff.months();
+
+    return `${ageYears} years, ${ageMonths} months`
   }
 
   toggleAddLabs(){

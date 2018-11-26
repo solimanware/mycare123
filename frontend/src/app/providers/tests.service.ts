@@ -14,4 +14,7 @@ export class TestsService {
   getTestItems(id){
     return this.http.get(`https://mycare123.herokuapp.com/api/tests/${id}`)
   }
+  submitTestItemResult(id,results){
+    return this.http.patch(`https://mycare123.herokuapp.com/api/tests/${id}`,results)
+  }
 }
