@@ -35,7 +35,9 @@ module.exports = {
 
 
         return Promise.all(buildRowPromises(data)).then(res => {
-            response.status(200).send('done')
+            response.status(200).json({
+                error: false
+            })
 
         }).catch(e => {
             console.log('error:    ', e)
