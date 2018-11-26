@@ -31,10 +31,9 @@ const view = (data) => {
         </table>
         <hr>
         <table border="1">
-            <tr><td>Test name</td>
-            <tr><td>Test items</td>
-
-        </tr>${getTests(data)}</table>
+            <tr><td>Test name</td><td>Test items</td></tr>
+            ${getTests(data)}
+        </table>
     `;
 }
 
