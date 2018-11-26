@@ -30,7 +30,11 @@ const view = (data) => {
             </tr>
         </table>
         <hr>
-        <table border="1">${getTests(data)}</table>
+        <table border="1">
+            <tr><td>Test name</td>
+            <tr><td>Test items</td>
+
+        </tr>${getTests(data)}</table>
     `;
 }
 
@@ -39,10 +43,8 @@ function getTests(data){
     Object.keys(data).forEach(key => {
         res += `<tr>`;
 
-        res += `<td>Test name</td>`;
         res += `<td>` + data[key][0].test_name  +`</td>`
 
-        res += `<td>Test items</td>`;
         res += `<td>${getItems(data[key])}</td>`;
         
         res +=`</tr>`;
