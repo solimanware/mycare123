@@ -98,7 +98,7 @@ module.exports = {
          sequelize.query(`
             SELECT 
             items_results_values.id, items_results_values.value, tests_items.name as item_name, 
-            items_results_values.item_id, tests.name as test_name
+            items_results_values.item_id, tests.name as test_name, tests_items.normal_range as item_normal_range
             FROM items_results_values 
             inner join visits_tests on items_results_values.visit_test_id = visits_tests.id
             inner join visits on visits_tests.visit_id = visits.id
