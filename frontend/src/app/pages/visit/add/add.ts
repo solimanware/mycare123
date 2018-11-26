@@ -6,8 +6,8 @@ import { NavigationService } from 'src/app/providers/navigation.service';
 
 @Component({
   selector: 'app-new-lab-visit',
-  templateUrl: './patients.html',
-  styleUrls: ['./patients.scss']
+  templateUrl: './add.html',
+  styleUrls: ['./add.scss']
 })
 export class NewLabVisitComponent implements OnInit {
   patients = [];
@@ -36,6 +36,7 @@ export class NewLabVisitComponent implements OnInit {
       this.dataSource = this.rememberedState;
     }
   }
+  
   createNewVisit(patient){
     let params: NavigationExtras = {
       queryParams: {
@@ -43,6 +44,9 @@ export class NewLabVisitComponent implements OnInit {
       }
     };
     this.navigation.goToCreateNewVisit(params)
+  }
+  goToCreateNewPatientPage(){
+    this.navigation.goToCreateNewPatient();
   }
 }
 

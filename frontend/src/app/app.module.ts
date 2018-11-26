@@ -17,7 +17,7 @@ import { CreateNewLabVisitComponent } from './pages/visit/edit/edit';
 import { EnterTestResultsComponent } from './pages/visit/results/results';
 import { VisitsOverviewComponent } from './pages/visit/visits/visits';
 import { NewPatientComponent } from './pages/patient/new/new';
-import { NewLabVisitComponent } from './pages/patient/patients/patients';
+import { NewLabVisitComponent } from './pages/visit/add/add';
 
 
 const routes: Routes = AppRoutes
