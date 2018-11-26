@@ -108,7 +108,7 @@ module.exports = {
 
          `) .then(res => {
             // We don't need spread here, since only the results will be returned for select queries
-            response.status(200).send(res)
+            response.status(200).send(res[0])
           })
 
 
