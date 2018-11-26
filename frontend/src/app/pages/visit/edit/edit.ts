@@ -9,7 +9,7 @@ import { VisitService } from 'src/app/providers/visit.service';
   templateUrl: './edit.html',
   styleUrls: ['./edit.scss']
 })
-export class CreateNewLabVisitComponent implements OnInit {
+export class EditVisitComponent implements OnInit {
   patient;
   categories;
   tests;

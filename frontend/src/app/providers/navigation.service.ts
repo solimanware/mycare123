@@ -23,7 +23,14 @@ export class NavigationService {
   goToEditVistDetail(id): void {
     this.router.navigate(['visits/',id,'edit'])
   }
-  goToEnterVisitResults(id):void{
-    this.router.navigate(['visits/',id,'results'])
+  goToCreateVisitResults(id):void{
+    this.router.navigate(['visits/',id,'results','create'])
+  }
+  
+  goToViewVisitResults(id):void{
+    this.router.navigate(['visits/',id,'results','view'])
+  }
+  goToEditVisitResults(id):void{
+    this.router.navigate(['visits/',id,'results','edit'])
   }
 }

@@ -10,14 +10,16 @@ import { AppRoutes } from './routes/routes';
 import { SideNavComponent } from './bootstrap/side-nav/side-nav.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { VisitDetailComponent } from './pages/visit/visit-detail/visit-detail.component';
 import { CustomMaterialModule } from './helpers/custom-material/custom-material.module';
 import { MAT_DATE_LOCALE } from '@angular/material';
-import { CreateNewLabVisitComponent } from './pages/visit/edit/edit';
-import { EnterTestResultsComponent } from './pages/visit/results/results';
 import { VisitsOverviewComponent } from './pages/visit/visits/visits';
 import { NewPatientComponent } from './pages/patient/new/new';
-import { NewLabVisitComponent } from './pages/visit/add/add';
+import { ViewVisitComponent } from './pages/visit/view/view';
+import { ViewResultsComponent } from './pages/result/view/view';
+import { CreateVisitComponent } from './pages/visit/create/create';
+import { EditVisitComponent } from './pages/visit/edit/edit';
+import { CreateResultsComponent } from './pages/result/create/create';
+import { EditResultsComponent } from './pages/result/edit/edit';
 
 
 const routes: Routes = AppRoutes
@@ -29,11 +31,13 @@ const routes: Routes = AppRoutes
     LoginComponent,
     DashboardComponent,
     NewPatientComponent,
-    NewLabVisitComponent,
-    CreateNewLabVisitComponent,
-    EnterTestResultsComponent,
     VisitsOverviewComponent,
-    VisitDetailComponent
+    CreateVisitComponent,
+    EditVisitComponent,
+    ViewVisitComponent,
+    CreateResultsComponent,
+    EditResultsComponent,
+    ViewResultsComponent
   ],
   imports: [
     BrowserModule,

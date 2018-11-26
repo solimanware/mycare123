@@ -8,10 +8,10 @@ import { TestsService } from 'src/app/providers/tests.service';
 
 @Component({
   selector: 'app-enter-test-results',
-  templateUrl: './results.html',
-  styleUrls: ['./results.scss']
+  templateUrl: './create.html',
+  styleUrls: ['./create.scss']
 })
-export class EnterTestResultsComponent implements OnInit {
+export class CreateResultsComponent implements OnInit {
 
   patientId: number;
   visit: any;

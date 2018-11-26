@@ -6,10 +6,10 @@ import { NavigationService } from 'src/app/providers/navigation.service';
 
 @Component({
   selector: 'app-new-lab-visit',
-  templateUrl: './add.html',
-  styleUrls: ['./add.scss']
+  templateUrl: './create.html',
+  styleUrls: ['./create.scss']
 })
-export class NewLabVisitComponent implements OnInit {
+export class CreateVisitComponent implements OnInit {
   patients = [];
   rememberedState: any;
   constructor(private patientService: PatientService,private router: Router,private navigation:NavigationService) { }
