@@ -11,6 +11,7 @@ router.get('/:id', visitController.findById);
 
 router.get('/:id/results', visitController.findResultsByVisitId);
 
+router.get('/:id/results-report', visitController.findResultsReportByVisitId);
 
 router.patch('/:id', visitController.update);
 
