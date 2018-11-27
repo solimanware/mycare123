@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
+import { FormControl, Validators, FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
 import * as moment from 'moment';
 import { PatientService } from 'src/app/providers/patient.service';
 import { NavigationService } from 'src/app/providers/navigation.service';
 import { NavigationExtras } from '@angular/router';
 
-const mobileRegEx = /^[0]\d{10}$/;
+const mobileRegEx = /^\+?\d+$/;
 
 @Component({
   selector: 'app-new-patient',
@@ -13,84 +13,89 @@ const mobileRegEx = /^[0]\d{10}$/;
   styleUrls: ['./new.scss']
 })
 export class NewPatientComponent implements OnInit {
+  name = new FormControl('', Validators.required);
+  mobileNumber = new FormControl('', Validators.required);
+  confirmMobileNumber = new FormControl('', Validators.required);
+  gender = new FormControl('', Validators.required);
+  birthDate = new FormControl('', Validators.required);
+  email = new FormControl('', Validators.email);
+  profession = new FormControl('');
+
   genders = [
-    {value:'male',viewValue:'Male'},
-    {value:'female',viewValue:'Female'},
-    {value:'other',viewValue:'Other'},
-  ]
-  
-  name = new FormControl('', []);
-  gender = new FormControl('', []);
-  profession = new FormControl('', []);
-  email = new FormControl('', [ Validators.email]);
-  birthDate = new FormControl('', []);
-  mobileNumber = new FormControl('',[Validators.pattern(mobileRegEx)])
-  confirmMobileNumber = new FormControl('',[Validators.pattern(mobileRegEx)])
-  ageYears:number = 0;
-  ageMonths:number = 0;
-  constructor(private patientService:PatientService,private navigation:NavigationService) { }
+    { value: 'male', viewValue: 'Male' },
+    { value: 'female', viewValue: 'Female' }
+  ];
+  ageYears = 0;
+  ageMonths = 0;
+  error: string;
+  constructor(private patientService: PatientService, private navigation: NavigationService) { }
 
   ngOnInit() {
   }
 
-  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-  let mobileNumber = group.controls.mobileNumber.value;
-  let confirmMobileNumber = group.controls.confirmMobileNumber.value;
 
-  return mobileNumber === confirmMobileNumber ? null : { notSame: true }     
-}
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
-            '';
-  }
 
-  getWrongNumber(){
-    return this.mobileNumber.hasError('required') ? 'You must enter a value':
-    this.mobileNumber.hasError('mobileNumber')?'Not Valid Mobile Number':
-    ''
-  }
- 
-  changeAge(event){
-    console.log(event.value);
-    
-    let dob = moment(event.value)    
-    let now = moment()
-
-    let diff = moment.duration(now.diff(dob))
-
-    this.ageYears = diff.years()
-    console.log(this.ageYears);
-    
+  changeAge(_) {
+    // event has been fired changes happened to picker
+    const dob = moment(this.birthDate.value);
+    const now = moment();
+    const diff = moment.duration(now.diff(dob));
+    this.ageYears = diff.years();
     this.ageMonths = diff.months();
+    console.log(this.birthDate.value);
   }
 
+  validateData() {
+    return this.name &&
+      this.gender.value &&
+      this.mobileNumber.value &&
+      this.mobileNumber.value === this.confirmMobileNumber.value &&
+      this.birthDate.value;
+  }
 
-  submitNewPatient(){
+  submitPatient() {
+    console.log('hiii');
+    // validations required
+    if (this.validateData()) {
+      // map data to server
+      const data: any = {
+        name: this.name.value,
+        mobile_number: this.mobileNumber.value,
+        gender: this.gender.value,
+        email: this.email.value,
+        birth_date: moment(this.birthDate.value).format('YYYY-MM-DD HH:mm:ss'),
+        profession: this.profession.value
+      };
+      // 'YYYY-MM-DD HH:mm:ss'
+      // post to server
+      console.log('posting', data);
 
-    let data = {
-      name:this.name.value,
-      mobileNumber:this.mobileNumber.value,
-      gender:this.gender.value,
-      email:this.email.value,
-      birthDate:moment(this.birthDate.value,'YYYY-MM-DD HH:mm:ss'),
-      profession:this.profession.value
+      this.postPatientToServer(data);
+      // custom error checks
+    } else if (!this.birthDate.valid) {
+      this.error = 'enter birth date';
+    } else if (this.mobileNumber.value !== this.confirmMobileNumber.value) {
+      this.error = `The Mobile Numbers Don't match`;
+    } else {
+      this.error = `Fill in required data`;
     }
+  }
 
-    console.log(data.birthDate);
-    
-    
-    this.patientService.postPatient(data).subscribe((res:any)=>{
+  postPatientToServer(data) {
+    this.patientService.postPatient(data).subscribe((res: any) => {
       console.log(res);
-      let params: NavigationExtras = {
+      const params: NavigationExtras = {
         queryParams: {
-            "id": res.id
+          'id': res.id
         }
       };
-      this.navigation.goToCreateNewVisit(params)
-    })
+      this.navigation.goToCreateNewVisit(params);
+    });
   }
+
 }
+
+
 
 

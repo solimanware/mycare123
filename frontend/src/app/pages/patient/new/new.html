@@ -1,17 +1,17 @@
-<div class="form-container">
+<form class="form-container" (ngSubmit)="submitPatient()" >
   <h1 class="text-center">Create New Patient</h1>
-
+  <p style="color: red">{{error}}</p>
 
   <div class="split">
     <div class="half">
       <mat-form-field class="form-input-half">
-        <input matInput required placeholder="Name" [formControl]="name" name="name">
+        <input matInput required placeholder="Name" [formControl]="name">
       </mat-form-field>
       <mat-form-field class="form-input-half">
-        <input matInput required placeholder="Mobile Number" type="text" [formControl]="mobileNumber" name="mobileNumber">
+        <input matInput required placeholder="Mobile Number" type="text" [formControl]="mobileNumber">
       </mat-form-field>
       <mat-form-field class="form-input-half">
-        <input matInput required placeholder="Confirm Mobile Number" type="text" [formControl]="confirmMobileNumber" name="confirmMobileNumber">
+        <input matInput required placeholder="Confirm Mobile Number" type="text" [formControl]="confirmMobileNumber">
       </mat-form-field>
 
       <mat-form-field class="form-input-half">
@@ -28,7 +28,7 @@
 
     <div class="half float-right" align="end">
       <mat-form-field class="form-input-half">
-        <input matInput required [matDatepicker]="picker" placeholder="Choose a date"(dateChange)="changeAge($event)">
+        <input matInput required [matDatepicker]="picker" placeholder="Choose a date" [formControl]="birthDate" (dateChange)="changeAge($event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
@@ -42,7 +42,6 @@
       </div>
       <mat-form-field class="form-input-half">
         <input matInput placeholder="Enter your email" [formControl]="email" name="email">
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="form-input-half">
@@ -57,6 +56,6 @@
   </div>
 
   <div class="form-enter-button" align="end">
-    <button mat-raised-button color="primary" (click)="submitNewPatient()" class="enter-button">Create</button>
+    <button mat-raised-button color="primary" class="enter-button">Create</button>
   </div>
-</div>
+</form>
