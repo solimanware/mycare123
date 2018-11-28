@@ -84,7 +84,7 @@ module.exports = {
             // We don't need spread here, since only the results will be returned for select queries
             genenrateVisitReport(newResults, id).then(res => {
 
-                response.status(200).send(res)
+                response.status(200).download(res)
             });
 
                 // response.status(200).send(newResults)

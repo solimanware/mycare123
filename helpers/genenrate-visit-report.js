@@ -9,11 +9,8 @@ module.exports = (data ,visitId) => {
     const pdfFile = `./visits-results-repors/${visitId}.pdf`;
     return new Promise((resolve, reject) => {
         pdf.create(htmlResults, options).toFile(pdfFile, function(err, res) {
-        const result = fs.readFileSync(pdfFile)    
-
-        resolve(result);
+        resolve(pdfFile);
         if (err) return console.log(err);
-            console.log(res); // { filename: '/app/businesscard.pdf' }
         });
         
     });
