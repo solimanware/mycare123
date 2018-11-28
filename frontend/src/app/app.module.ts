@@ -24,7 +24,7 @@ import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './helpers/adabters/date'
 import { MAT_DATE_LOCALE } from '@angular/material';
 
 
-const routes: Routes = AppRoutes
+const routes: Routes = AppRoutes;
 
 @NgModule({
   declarations: [

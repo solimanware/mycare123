@@ -13,12 +13,14 @@ import { TestsService } from 'src/app/providers/tests.service';
 })
 export class EditResultsComponent implements OnInit {
 
+ 
   patientId: number;
   visit: any;
   patient: any;
-  tests:any;
+  tests: any;
   currentSelection: any;
   results = {};
+  resultsArr = [];
 
   constructor(
     private patientService: PatientService,
@@ -27,73 +29,72 @@ export class EditResultsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) { }
 
-  displayedColumns: string[] = ['id', 'name', 'testResult', 'normal_range'];
+  displayedColumns: string[] = ['id', 'item_name', 'value', 'item_normal_range'];
   dataSource = new MatTableDataSource<any>([]);
-  
-  
-  displayedRequiredTestsColumns: string[] = ['name','id','status']
+
+
+  displayedRequiredTestsColumns: string[] = ['name', 'id']
   testNamesSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.patientId = +params['id']; // (+) converts string 'id' to a number
-      this.visitService.getVisit(this.patientId).subscribe((visit: any) => {
-        console.log(visit);
-        this.visit = visit
-        this.patient = visit.patient
-        this.patient["age"] = this.getAge(this.patient.birth_date)
-        this.tests = visit.tests
-        this.testNamesSource = new MatTableDataSource<any>(this.tests);
+    this.route.params
+      .subscribe(params => {
+        this.patientId = +params['id']; // (+) converts string 'id' to a number
+        this.visitService
+          .getVisit(this.patientId)
+          .subscribe((visit: any) => {
+            console.log(visit);
+            this.visit = visit
+            this.patient = visit.patient
+            this.patient["age"] = this.getAge(this.patient.birth_date)
+            this.tests = visit.tests
+            this.testNamesSource = new MatTableDataSource<any>(this.tests);
+            this.visitService.getVisitResults(this.visit.id).subscribe((res: any) => {
+              console.log(res);
+              this.resultsArr = res;
+            })
+          })
       })
-    })
+
   }
 
-  editTestItems(id){
+  editTestItems(id) {
     console.log(id);
     this.currentSelection = id;
-    
-    this.testService.getTestItems(id).subscribe((items:any)=>{
-      console.log(items);
-      console.log(items.tests_items);
-      
-      this.dataSource =  new MatTableDataSource<any>(items.tests_items);
-    })
+    const testItems = this.resultsArr.filter(item => item.test_id == id)
+    this.dataSource = new MatTableDataSource<any>(testItems);
+
   }
-  submitTestResults(){
-    console.log(this.results);
+
+  submitTestResults() {
     let arr = [];
-    for(let result in this.results){
+    for (let result in this.results) {
       arr.push({
-        id:result,
-        value:this.results[result]
+        id: result,
+        value: this.results[result]
       })
     }
-    console.log(arr);
-    console.log(this.visit.id);
-    
-    this.visitService.patchResult(this.visit.id,arr).subscribe(res=>{
+
+    this.visitService.patchResult(this.visit.id, arr).subscribe(res => {
       console.log(res);
     })
     
-    
-    
   }
 
-  getAge(value){
-    let dob = moment(value)    
+  getAge(value) {
+    let dob = moment(value)
     let now = moment()
 
     let diff = moment.duration(now.diff(dob))
 
     let ageYears = diff.years()
-    
+
     let ageMonths = diff.months();
 
     return `${ageYears} years, ${ageMonths} months`
   }
-
 
 
 

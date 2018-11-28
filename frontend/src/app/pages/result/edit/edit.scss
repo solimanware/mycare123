@@ -1,103 +1,102 @@
 .create-visit-container {
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border: 1px solid black;
-    margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid black;
+  margin: 10px auto;
+  width: 95%;
+}
+.visit-header{
+  border:2px solid black;
+}
+.paient-info-container{
+  border:2px solid black;
+  padding-left:20px;
+  width:calc(35% - 20px);
+  display: inline-block;
+}
+.add-labs-container{
+  border:2px solid black;
+  padding-left:20px;
+  width:calc(63% - 40px);
+  float: right;
+  display: inline-block;
+  vertical-align: top;
+}
+.main-container{
+  margin-top: 10px;
+}
+.tests-container{
+  width: 50%;
+}
+.tests-table{
+  width: 96%;
+}
+.test-container{
+  height: 40px;
+  line-height: 20px;
+  display: block;
+}
+.test-result{
+    height: 30px;
+}
+.remove-button{
+  float: right;
+}
+.search-container{
+   // border: 2px solid tomato;
+}
+.table-container{
     width: 95%;
-  }
-  .visit-header{
-    border:2px solid black;
-  }
-  .paient-info-container{
-    border:2px solid black;
-    padding-left:20px;
-    width:calc(35% - 20px);
+    margin:0 auto;
+}
+.notes-area{
+  width: 96%;
+}
+.twothird{
+    width: 65%;
     display: inline-block;
-  }
-  .add-labs-container{
-    border:2px solid black;
-    padding-left:20px;
-    width:calc(63% - 40px);
-    float: right;
+}
+.onethird{
+    width: 25%;
     display: inline-block;
-    vertical-align: top;
-  }
-  .main-container{
-    margin-top: 10px;
-  }
-  .tests-container{
-    width: 50%;
-  }
-  .tests-table{
-    width: 96%;
-  }
-  .test-container{
-    height: 40px;
-    line-height: 20px;
-    display: block;
-  }
-  .test-result{
-      height: 30px;
-  }
-  .remove-button{
-    float: right;
-  }
-  .search-container{
-     // border: 2px solid tomato;
-  }
-  .table-container{
-      width: 95%;
-      margin:0 auto;
-  }
-  .notes-area{
-    width: 96%;
-  }
-  .twothird{
-      width: 65%;
-      display: inline-block;
-  }
-  .onethird{
-      width: 25%;
-      display: inline-block;
-  }
-  table {
-    width: 100% ;
-  }
-  .form-title{
-  margin-top: 30px;
-  margin-right: 20px;
-  margin-left: 20px;
-  }
-  .form-input {
-    margin: 20px;
-   // text-align: center;
-  }
+}
+table {
+  width: 100% ;
+}
+.form-title{
+margin-top: 30px;
+margin-right: 20px;
+margin-left: 20px;
+}
+.form-input {
+  margin: 20px;
+ // text-align: center;
+}
 
-  .split{
-    width: 100%;
-  }
-  .half{
-    width: 45%;
-    display: inline-block;
-    vertical-align: top;
-  }
-  .form-input-half {
-   margin: 20px;
-   width: 90%;
-  }
-  
-  .form-enter-button{
-    margin-right: 20px;
-  }
-  .enter-button{
-    width: 150px;
-    margin-left: 30px;
-    margin-bottom: 30px;
-    background: linear-gradient(to left ,#2cadc8,#32c5bf);
-  }
-  .action-buttons-container{
-      float: right;
-      text-align: right;
-  }
-  
+.split{
+  width: 100%;
+}
+.half{
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+}
+.form-input-half {
+ margin: 20px;
+ width: 90%;
+}
+
+.form-enter-button{
+  margin-right: 20px;
+}
+.enter-button{
+  width: 150px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  background: linear-gradient(to left ,#2cadc8,#32c5bf);
+}
+.action-buttons-container{
+    float: right;
+    text-align: right;
+}

@@ -22,6 +22,15 @@ export class VisitService {
     return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}`)
   }
   patchResult(id,body){
-    return this.http.patch(`https://mycare123.herokuapp.com/api/visits/${id}/results`,JSON.stringify(body))
+    return this.http.patch(`https://mycare123.herokuapp.com/api/visits/${id}/results`,body)
+  }
+  getVisitResults(id){
+    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}/results`)
+  }
+  getVisitPrintPDF(id){
+    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}/results-report`)
+  }
+  printVisitPDF(id){
+    window.location.href=`https://mycare123.herokuapp.com/api/visits/${id}/results-report`
   }
 }
