@@ -33,12 +33,8 @@
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
       <div class="form-input-half age-preview">
-        <mat-form-field class="age-years">
-          <input matInput placeholder="Years" name="age" [value]="ageYears" disabled>
-        </mat-form-field>
-        <mat-form-field class="age-months">
-          <input matInput placeholder="Months" name="age" [value]="ageMonths" disabled>
-        </mat-form-field>
+        <h3>{{ageYears}} Years, {{ageMonths}} Months</h3>
+        
       </div>
       <mat-form-field class="form-input-half">
         <input matInput placeholder="Enter your email" [formControl]="email" name="email">

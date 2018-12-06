@@ -20,7 +20,6 @@ for (let date = 1; date <= 31; date++) {
 }
 
 export class MomentDateAdapter extends DateAdapter<Moment> {
-    
 
   private localeData = moment.localeData();
 
@@ -28,8 +27,8 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
     return date.year();
   }
   invalid(): Moment {
-    throw new Error("Method not implemented.");
-}
+    throw new Error('Method not implemented.');
+  }
 
   getMonth(date: Moment): number {
     return date.month();
@@ -94,14 +93,7 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
   }
 
   parse(value: any, parseFormat: any): Moment {
-    let m = moment(value, parseFormat, true);
-    if (!m.isValid()) {
-      m = moment(value);
-    }
-    if (m.isValid()) {
-      return m;
-    }
-    return null;
+    return moment(value, parseFormat);
   }
 
   format(date: Moment, displayFormat: any): string {
@@ -151,18 +143,18 @@ export class MomentDateAdapter extends DateAdapter<Moment> {
 
   isValid(date: Moment): boolean {
     return date.isValid();
-  };
+  }
 
   isDateInstance(obj: Object): boolean {
     return moment.isMoment(obj);
-  };
+  }
 
   toIso8601(date: Moment): string {
     return date.format();
-  };
+  }
 
   fromIso8601(iso8601String: string): Moment {
     return moment(iso8601String);
-  };
+  }
 
 }

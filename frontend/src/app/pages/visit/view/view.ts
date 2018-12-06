@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment'
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
+import * as moment from 'moment';
 import { VisitService } from 'src/app/providers/visit.service';
+import { NavigationService } from 'src/app/providers/navigation.service';
 
 @Component({
   selector: 'app-visit-detail',
@@ -9,7 +10,7 @@ import { VisitService } from 'src/app/providers/visit.service';
   styleUrls: ['./view.scss']
 })
 export class ViewVisitComponent implements OnInit {
-  patientId:number;
+  visitId: number;
   patient;
   categories;
   tests;
@@ -18,41 +19,49 @@ export class ViewVisitComponent implements OnInit {
   createdItems = [];
   notes;
   testIds = [];
-  addLabsEnabled:boolean = false;
-  constructor(private route: ActivatedRoute,private visit:VisitService) { }
+  addLabsEnabled = false;
+  visit;
+  constructor(
+    private route: ActivatedRoute,
+    private visitService: VisitService,
+    private navigation: NavigationService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.patientId = +params['id']; // (+) converts string 'id' to a number
-      this.visit.getVisit(this.patientId).subscribe((res:any)=>{
+      this.visitId = +params['id']; // (+) converts string 'id' to a number
+      this.visitService.getVisit(this.visitId).subscribe((res: any) => {
         this.patient = res.patient;
-        this.patient["age"] = this.getAge(res.patient.birth_date)
+        this.patient['age'] = this.getAge(res.patient.birth_date);
+        this.createdItems = res.tests;
+        this.visit = res;
         console.log(res);
-        this.createdItems = res.tests
-        console.log(res.tests);
-        
-        console.log(this.patient);
-        
-        
-      })
-   });
+      });
+    });
   }
 
-  getAge(value){
-    let dob = moment(value)    
-    let now = moment()
+  getAge(value) {
+    const dob = moment(value);
+    const now = moment();
 
-    let diff = moment.duration(now.diff(dob))
+    const diff = moment.duration(now.diff(dob));
 
-    let ageYears = diff.years()
-    
-    let ageMonths = diff.months();
+    const ageYears = diff.years();
 
-    return `${ageYears} years, ${ageMonths} months`
+    const ageMonths = diff.months();
+
+    return `${ageYears} years, ${ageMonths} months`;
   }
 
-  toggleAddLabs(){
-    this.addLabsEnabled = !this.addLabsEnabled
+  toggleAddLabs() {
+    this.addLabsEnabled = !this.addLabsEnabled;
+  }
+  eidtVisit() {
+    const params: NavigationExtras = {
+      queryParams: {
+        'id': this.patient.id
+      }
+    };
+    this.navigation.goToEditVistDetail(this.visit.id);
   }
 
 }

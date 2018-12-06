@@ -21,7 +21,7 @@ import { CreateResultsComponent } from './pages/result/create/create';
 import { EditResultsComponent } from './pages/result/edit/edit';
 import { PatientsOverviewComponent } from './pages/patient/patients/patients';
 import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './helpers/adabters/date';
-import { MAT_DATE_LOCALE } from '@angular/material';
+import { MAT_DATE_LOCALE, DateAdapter, MatDateFormats, MAT_DATE_FORMATS } from '@angular/material';
 
 
 const routes: Routes = AppRoutes;
@@ -54,7 +54,8 @@ const routes: Routes = AppRoutes;
   ],
   providers: [
     HttpClientModule,
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+    {provide: DateAdapter, useClass: MomentDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: MOMENT_DATE_FORMATS}
   ],
   bootstrap: [AppComponent]
 })

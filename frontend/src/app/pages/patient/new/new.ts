@@ -38,12 +38,18 @@ export class NewPatientComponent implements OnInit {
 
   changeAge(_) {
     // event has been fired changes happened to picker
-    const dob = moment(this.birthDate.value);
+    const dob = _.value;
+    console.log(dob);
     const now = moment();
     const diff = moment.duration(now.diff(dob));
+    console.log(diff);
+    
     this.ageYears = diff.years();
     this.ageMonths = diff.months();
-    console.log(this.birthDate.value);
+    console.log(this.ageYears);
+    console.log(this.ageMonths);
+    
+    
   }
 
   validateData() {

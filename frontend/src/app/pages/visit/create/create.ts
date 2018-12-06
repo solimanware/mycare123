@@ -5,7 +5,7 @@ import { PatientService } from 'src/app/providers/patient.service';
 import { NavigationService } from 'src/app/providers/navigation.service';
 import { TestsService } from 'src/app/providers/tests.service';
 import { VisitService } from 'src/app/providers/visit.service';
-import * as moment from 'moment'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-new-lab-visit',
@@ -21,53 +21,53 @@ export class CreateVisitComponent implements OnInit {
   notes;
   testIds = [];
   constructor(
-    private route: ActivatedRoute, 
-    private patientService: PatientService, 
+    private route: ActivatedRoute,
+    private patientService: PatientService,
     private testService: TestsService,
-    private visitSerivce:VisitService,
-    private navigation:NavigationService) { }
+    private visitSerivce: VisitService,
+    private navigation: NavigationService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(({ id }) => {
-      this.patientService.getPatientById(id).subscribe((patient:any) => {
+      this.patientService.getPatientById(id).subscribe((patient: any) => {
         this.patient = patient;
-        this.patient['age'] = this.getAge(patient.birth_date)
-      })
-      //this.patient = data;
+        this.patient['age'] = this.getAge(patient.birth_date);
+      });
+      // this.patient = data;
       // console.log(this.patient);
-    })
+    });
     this.getTestsCategories();
   }
-  getAge(value){
-    let dob = moment(value)    
-    let now = moment()
+  getAge(value) {
+    const dob = moment(value);
+    const now = moment();
 
-    let diff = moment.duration(now.diff(dob))
+    const diff = moment.duration(now.diff(dob));
 
-    let ageYears = diff.years()
-    
-    let ageMonths = diff.months();
+    const ageYears = diff.years();
 
-    return `${ageYears} years, ${ageMonths} months`
+    const ageMonths = diff.months();
+
+    return `${ageYears} years, ${ageMonths} months`;
   }
 
-  createNewVisit(){
-    console.log(this.patient["id"],this.testIds,this.notes);
-    
-    this.visitSerivce.postVisit(this.patient["id"],this.testIds,this.notes).subscribe(res=>{
+  createNewVisit() {
+    console.log(this.patient['id'], this.testIds, this.notes);
+
+    this.visitSerivce.postVisit(this.patient['id'], this.testIds, this.notes).subscribe(res => {
       console.log(res);
-      //navigate
-      alert('visit created')
+      // navigate
+      alert('visit created');
       this.navigation.goToVisitsOverview();
-      
-    })
+
+    });
   }
 
   chooseTestName($event) {
-    let catName = $event.value
+    const catName = $event.value;
     for (let i = 0; i < this.categories.length; i++) {
       if (catName === this.categories[i].name) {
-        this.tests = this.categories[i]["tests"]
+        this.tests = this.categories[i]['tests'];
         console.log(this.tests);
 
       }
@@ -75,17 +75,17 @@ export class CreateVisitComponent implements OnInit {
 
   }
   chooseItem($event) {
-    let testName = $event.value
+    const testName = $event.value;
     console.log(testName);
-    
+
     for (let i = 0; i < this.tests.length; i++) {
       if (testName === this.tests[i].name) {
-        let id = this.tests[i].id
-        this.testService.getTestItems(id).subscribe((items:any) => { 
-        this.testIds.push(items.id)
-        
-          this.items = items.tests_items
-        })
+        const id = this.tests[i].id;
+        this.testService.getTestItems(id).subscribe((items: any) => {
+        this.testIds.push(items.id);
+
+          this.items = items.tests_items;
+        });
 
       }
     }
@@ -94,25 +94,25 @@ export class CreateVisitComponent implements OnInit {
 
   getTestsCategories() {
     this.testService.getAllTestsCategories().subscribe(categories => {
-      console.log(categories)
+      console.log(categories);
       this.categories = categories;
 
-    })
+    });
   }
 
   getTestItems(id) {
     this.testService.getTestItems(id).subscribe(items => {
 
       this.items = items;
-    })
+    });
   }
 
-  createNewTestItem($event){
+  createNewTestItem($event) {
     console.log($event.value);
-    
-    this.createdItems.push($event.value)
+
+    this.createdItems.push($event.value);
   }
-  goVisitsOverview(){
+  goVisitsOverview() {
     this.navigation.goToVisitsOverview();
   }
 

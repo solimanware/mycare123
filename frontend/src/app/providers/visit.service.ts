@@ -13,24 +13,31 @@ export class VisitService {
       patient_id: patientId,
       tests_ids: testIds,
       notes: notes
-    })
+    });
   }
-  getVisits(){
-    return this.http.get('https://mycare123.herokuapp.com/api/visits')
+  patchVisit(id, patientId, testIds, notes) {
+    return this.http.patch(`https://mycare123.herokuapp.com/api/visits/${id}`, {
+      patient_id: patientId,
+      tests_ids: testIds,
+      notes: notes
+    });
   }
-  getVisit(id){
-    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}`)
+  getVisits() {
+    return this.http.get('https://mycare123.herokuapp.com/api/visits');
   }
-  patchResult(id,body){
-    return this.http.patch(`https://mycare123.herokuapp.com/api/visits/${id}/results`,body)
+  getVisit(id) {
+    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}`);
   }
-  getVisitResults(id){
-    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}/results`)
+  patchResult(id, body) {
+    return this.http.patch(`https://mycare123.herokuapp.com/api/visits/${id}/results`, body);
   }
-  getVisitPrintPDF(id){
-    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}/results-report`)
+  getVisitResults(id) {
+    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}/results`);
   }
-  printVisitPDF(id){
-    window.location.href=`https://mycare123.herokuapp.com/api/visits/${id}/results-report`
+  getVisitPrintPDF(id) {
+    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}/results-report`);
+  }
+  printVisitPDF(id) {
+    window.location.href = `https://mycare123.herokuapp.com/api/visits/${id}/results-report`;
   }
 }
