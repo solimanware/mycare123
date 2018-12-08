@@ -39,7 +39,8 @@ export class NewPatientComponent implements OnInit {
   changeAge(_) {
     // event has been fired changes happened to picker
     const dob = _.value;
-    console.log(dob);
+    this.birthDate.setValue(dob)
+    
     const now = moment();
     const diff = moment.duration(now.diff(dob));
     console.log(diff);
