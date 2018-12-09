@@ -3,11 +3,14 @@
 all end points should start with `/api`
 
 * ### Visits
-| Endpoint                      | Method | Request body                  | Response body                                           |
-| -------------                 | ------ | --------------                | -----------                                             |
-| `/visits/{id}/results`        | `GET`  |   `empty`                     |  `[{id, value, item_id, item_name, test_name}, .. etc]` |
-| `/visits/{id}/results`        | `PATCH`|   `[{id, value} .. etc]`      | `empty`                                                 |
-| `/visits/{id}/results-report` | `GET`  |   `empty`                     | `pdf file`                                              |
+| Endpoint                      | Method  | Request body                  | Response body                                           |
+| -------------                 | ------  | --------------                | -----------                                             |
+| `/visits/{id}/results`        | `GET`   |   `empty`                     |  `[{id, value, item_id, item_name, test_name}, .. etc]` |
+| `/visits/{id}/results`        | `PATCH` |   `[{id, value} .. etc]`      | `empty`                                                 |
+| `/visits/{id}/results-report` | `GET`   |   `empty`                     | `pdf file`                                              |
+| `/visits/{id}`                | `PATCH` |   `{patient_id, notes, tests_ids: [list of numbers]}`| `empty`                          |
+| `/visits`                     | `POST` |   `{patient_id, notes, tests_ids: [list of numbers]}`| `empty`                          |
+
 
 
 
