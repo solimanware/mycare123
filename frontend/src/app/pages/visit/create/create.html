@@ -7,7 +7,6 @@
     <h2 class="inline-block pr-20 pl-20">Visit Date: 31/10/2018</h2>
     <h2 class="inline-block pr-20 pl-20">Visit Time: 8:00 PM</h2>
   </div> -->
-
   <div class="main-container">
     <div class="paient-info-container">
       <h2>Patient Data:</h2>
@@ -21,35 +20,15 @@
 
     <div class="add-labs-container">
       <h2>Add Labs:</h2>
-      <mat-form-field class="tests-container">
-        <mat-select placeholder="Choose Test Category" (selectionChange)="chooseTestName($event)">
-          <mat-option *ngFor="let category of categories" [value]="category.name" >
-            {{category.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="tests-container">
-        <mat-select placeholder="Choose Test Name" (selectionChange)="chooseItem($event)">
-          <mat-option *ngFor="let test of tests" [value]="test.name">
-            {{test.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="tests-container">
-        <mat-select placeholder="Choose Test Item" (selectionChange)="createNewTestItem($event)">
-          <mat-option *ngFor="let item of items" [value]="item.name">
-            {{item.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <app-search-bar [data]="allTests" (result)="chooseTest($event)">
+
+      </app-search-bar>
 
       <h3>LabNames:</h3>
       <div class="tests-container">
 
         <div class="test-container" *ngFor="let item of createdItems;let i=index">
-          {{item}} <button mat-raised-button color="primary" class="remove-button" (click)="createdItems.splice(i,1)">Remove</button>
+          {{item.name}} <button mat-raised-button color="primary" class="remove-button" (click)="createdItems.splice(i,1)">Remove</button>
 
         </div>
       </div>

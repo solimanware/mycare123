@@ -22,6 +22,7 @@ import { EditResultsComponent } from './pages/result/edit/edit';
 import { PatientsOverviewComponent } from './pages/patient/patients/patients';
 import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './helpers/adabters/date';
 import { MAT_DATE_LOCALE, DateAdapter, MatDateFormats, MAT_DATE_FORMATS } from '@angular/material';
+import { SearchBarComponent } from './compnents/search-bar/search-bar.component';
 
 
 const routes: Routes = AppRoutes;
@@ -40,7 +41,8 @@ const routes: Routes = AppRoutes;
     CreateResultsComponent,
     EditResultsComponent,
     ViewResultsComponent,
-    PatientsOverviewComponent
+    PatientsOverviewComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
