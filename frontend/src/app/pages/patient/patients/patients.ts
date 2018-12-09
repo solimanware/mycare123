@@ -12,44 +12,44 @@ import { NavigationService } from 'src/app/providers/navigation.service';
 export class PatientsOverviewComponent implements OnInit {
   patients = [];
   rememberedState: any;
-  constructor(private patientService: PatientService,private router: Router,private navigation:NavigationService) { }
+  constructor(private patientService: PatientService, private router: Router, private navigation: NavigationService) { }
 
-  displayedColumns: string[] = ['id', 'name', 'mobile_number','buttons'];
+  displayedColumns: string[] = ['id', 'name', 'mobile_number', 'buttons'];
   dataSource = new MatTableDataSource<any>([]);
-  search = ''
+  search = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.patientService.getAllPatients().subscribe((arr: any) => {
-      this.rememberedState = arr
+      this.rememberedState = arr;
 
-      this.dataSource = new MatTableDataSource(arr)
-    })
+      this.dataSource = new MatTableDataSource(arr);
+    });
   }
   doSearch() {
     if (this.search.length) {
       this.patientService.searchPatientByMobile(this.search).subscribe((paitentsArr: any) => {
-        this.dataSource = new MatTableDataSource(paitentsArr)
-      })
+        this.dataSource = new MatTableDataSource(paitentsArr);
+      });
     } else {
       this.dataSource = this.rememberedState;
     }
   }
-  
-  createNewVisit(patient){
-    let params: NavigationExtras = {
+
+  createNewVisit(patient) {
+    const params: NavigationExtras = {
       queryParams: {
-          "id": patient.id
+          'id': patient.id
       }
     };
-    this.navigation.goToCreateNewVisit(params)
+    this.navigation.goToCreateNewVisit(params);
   }
 
-  goToCreateNewPatientPage(){
+  goToCreateNewPatientPage() {
     this.navigation.goToCreateNewPatient();
   }
-  createPatient(){
+  createPatient() {
     this.navigation.goToCreateNewPatient();
   }
 }

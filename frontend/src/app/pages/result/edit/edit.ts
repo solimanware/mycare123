@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PatientService } from 'src/app/providers/patient.service';
 import { VisitService } from 'src/app/providers/visit.service';
-import * as moment from 'moment'
+import * as moment from 'moment';
 import { TestsService } from 'src/app/providers/tests.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { TestsService } from 'src/app/providers/tests.service';
 })
 export class EditResultsComponent implements OnInit {
 
- 
+
   patientId: number;
   visit: any;
   patient: any;
@@ -33,7 +33,7 @@ export class EditResultsComponent implements OnInit {
   dataSource = new MatTableDataSource<any>([]);
 
 
-  displayedRequiredTestsColumns: string[] = ['name', 'id']
+  displayedRequiredTestsColumns: string[] = ['name', 'id'];
   testNamesSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -46,54 +46,55 @@ export class EditResultsComponent implements OnInit {
           .getVisit(this.patientId)
           .subscribe((visit: any) => {
             console.log(visit);
-            this.visit = visit
-            this.patient = visit.patient
-            this.patient["age"] = this.getAge(this.patient.birth_date)
-            this.tests = visit.tests
+            this.visit = visit;
+            this.patient = visit.patient;
+            this.patient['age'] = this.getAge(this.patient.birth_date);
+            this.tests = visit.tests;
             this.testNamesSource = new MatTableDataSource<any>(this.tests);
             this.visitService.getVisitResults(this.visit.id).subscribe((res: any) => {
               console.log(res);
               this.resultsArr = res;
-            })
-          })
-      })
+            });
+          });
+      });
 
   }
 
   editTestItems(id) {
     console.log(id);
     this.currentSelection = id;
-    const testItems = this.resultsArr.filter(item => item.test_id == id)
+    const testItems = this.resultsArr.filter(item => item.test_id === id);
     this.dataSource = new MatTableDataSource<any>(testItems);
 
   }
 
   submitTestResults() {
-    let arr = [];
-    for (let result in this.results) {
+    const arr = [];
+    // tslint:disable-next-line:forin
+    for (const result in this.results) {
       arr.push({
         id: result,
         value: this.results[result]
-      })
+      });
     }
 
     this.visitService.patchResult(this.visit.id, arr).subscribe(res => {
       console.log(res);
-    })
-    
+    });
+
   }
 
   getAge(value) {
-    let dob = moment(value)
-    let now = moment()
+    const dob = moment(value);
+    const now = moment();
 
-    let diff = moment.duration(now.diff(dob))
+    const diff = moment.duration(now.diff(dob));
 
-    let ageYears = diff.years()
+    const ageYears = diff.years();
 
-    let ageMonths = diff.months();
+    const ageMonths = diff.months();
 
-    return `${ageYears} years, ${ageMonths} months`
+    return `${ageYears} years, ${ageMonths} months`;
   }
 
 
