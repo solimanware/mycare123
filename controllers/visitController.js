@@ -217,10 +217,35 @@ module.exports = {
             });
     },
 
+    /**
+     * Update visit notes + patient id + visit tests
+     */
     update: (request, response) => {
-        const patient = request.body;
+        const visit = request.body;
         const id = request.params.id;
-        Visit.update(patient, { where: { id } })
+
+        // remove all visit tests
+        VisitsTests.destroy({ where: { visit_id: id }})
+        
+        // add the new tests ids for this visit
+        const testsIds = request.body.tests_ids || [];
+
+        const visitsTests = testsIds.map(test_id => ({
+            test_id,
+            visit_id: id
+        }));
+        console.log({visitsTests});
+        
+        VisitsTests.bulkCreate(visitsTests).then(res => {
+            console.log('visit tests sets succesfully!');
+            
+        }).catch(e=> {
+            console.log("Error on set visit tests ids");
+            
+        })
+
+
+        Visit.update(visit, { where: { id } })
             .then(result => {
                 Visit.findById(id).then(updatedVisit => {
                     response.status(200).send(updatedVisit);
