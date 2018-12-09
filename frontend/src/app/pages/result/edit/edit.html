@@ -71,7 +71,7 @@
 
             <ng-container matColumnDef="value">
               <th mat-header-cell *matHeaderCellDef> Result </th>
-              <td mat-cell *matCellDef="let element"> <input class="test-result" type="text" [(ngModel)]="results[element.id]" [placeholder]="element.value||'please enter value'"> </td>
+              <td mat-cell *matCellDef="let element"> <input class="test-result" type="text" [(ngModel)]="results[element.id]" placeholder="please enter value" [value]="element.value"> </td>
             </ng-container>
 
 
