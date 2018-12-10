@@ -12,6 +12,7 @@ import { NavigationService } from 'src/app/providers/navigation.service';
 export class PatientsOverviewComponent implements OnInit {
   patients = [];
   rememberedState: any;
+  creatingVisit: boolean;
   constructor(private patientService: PatientService, private router: Router, private navigation: NavigationService) { }
 
   displayedColumns: string[] = ['id', 'name', 'mobile_number', 'buttons'];
@@ -38,12 +39,14 @@ export class PatientsOverviewComponent implements OnInit {
   }
 
   createNewVisit(patient) {
+    this.creatingVisit = true;
     const params: NavigationExtras = {
       queryParams: {
           'id': patient.id
       }
     };
     this.navigation.goToCreateNewVisit(params);
+    this.creatingVisit = false;
   }
 
   goToCreateNewPatientPage() {

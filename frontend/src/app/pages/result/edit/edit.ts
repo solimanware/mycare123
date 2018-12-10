@@ -5,6 +5,7 @@ import { PatientService } from 'src/app/providers/patient.service';
 import { VisitService } from 'src/app/providers/visit.service';
 import * as moment from 'moment';
 import { TestsService } from 'src/app/providers/tests.service';
+import { NavigationService } from 'src/app/providers/navigation.service';
 
 @Component({
   selector: 'app-enter-test-results',
@@ -27,7 +28,8 @@ export class EditResultsComponent implements OnInit {
     private visitService: VisitService,
     private testService: TestsService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private navigation: NavigationService) { }
 
   displayedColumns: string[] = ['id', 'item_name', 'value', 'item_normal_range'];
   dataSource = new MatTableDataSource<any>([]);
@@ -98,7 +100,9 @@ export class EditResultsComponent implements OnInit {
   }
 
 
-
+  discard(){
+    this.navigation.goToViewVisitResults(this.visit.id);
+  }
 }
 
 

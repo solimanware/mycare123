@@ -31,6 +31,15 @@ export class NewPatientComponent implements OnInit {
   constructor(private patientService: PatientService, private navigation: NavigationService) { }
 
   ngOnInit() {
+    this.mobileNumber.valueChanges.subscribe(res=>{
+      if(res.length>=10){
+        this.patientService.searchPatientByMobile(res).subscribe((found:any)=>{
+          if(found.length>0){
+            alert('This patient already exists');
+          }
+        })
+      }
+    })
   }
 
 

@@ -58,7 +58,9 @@ export class CreateVisitComponent implements OnInit {
       testIds.push(item.id);
     });
     console.log(testIds);
-
+    if(testIds.length === 0){
+      alert('"You must choose a test" and this visit is not saved unless user add tests')
+    }
     this.visitSerivce.postVisit(this.patient['id'], testIds, this.notes).subscribe(res => {
       // navigate
       alert('visit created');
