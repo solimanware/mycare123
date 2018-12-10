@@ -55,6 +55,13 @@ export class EditVisitComponent implements OnInit {
   }
   chooseTest(event) {
     this.createdItems.push(event);
+    this.createdItems = removeDuplicates(this.createdItems, 'id')
+
+    function removeDuplicates(myArr, prop) {
+      return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+      });
+    }
   }
 
   getAge(value) {
@@ -80,7 +87,7 @@ export class EditVisitComponent implements OnInit {
     this.navigation.goToVisitsOverview();
   }
 
-  discard(){
+  discard() {
     this.navigation.goToViewVistDetail(this.visit.id);
   }
 
