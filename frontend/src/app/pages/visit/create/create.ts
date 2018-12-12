@@ -19,7 +19,8 @@ export class CreateVisitComponent implements OnInit {
   items;
   createdItems = [];
   notes;
-  testIds = [];
+  allTests = [];
+  emptyTests: boolean;
   constructor(
     private route: ActivatedRoute,
     private patientService: PatientService,
@@ -37,6 +38,7 @@ export class CreateVisitComponent implements OnInit {
       // console.log(this.patient);
     });
     this.getTestsCategories();
+    this.displayAllTests();
   }
   getAge(value) {
     const dob = moment(value);
@@ -52,15 +54,42 @@ export class CreateVisitComponent implements OnInit {
   }
 
   createNewVisit() {
-    console.log(this.patient['id'], this.testIds, this.notes);
-
-    this.visitSerivce.postVisit(this.patient['id'], this.testIds, this.notes).subscribe(res => {
-      console.log(res);
-      // navigate
-      alert('visit created');
-      this.navigation.goToVisitsOverview();
-
+    const testIds = [];
+    this.createdItems.forEach(item => {
+      testIds.push(item.id);
     });
+    console.log(testIds);
+    if(testIds.length === 0){
+      alert('"You must choose a test" and this visit is not saved unless user add tests')
+      alert('visit NOT created');
+      this.emptyTests = true;
+    }else{
+      this.emptyTests = false;
+      this.visitSerivce.postVisit(this.patient['id'], testIds, this.notes).subscribe(res => {
+        // navigate
+        alert('visit created');
+        this.navigation.goToVisitsOverview();
+  
+      });
+    }
+  }
+
+  displayAllTests() {
+    this.testService.getAllTests().subscribe((tests: any) => {
+      this.allTests = tests;
+      console.log(tests);
+    });
+  }
+
+  chooseTest(event) {
+    this.createdItems.push(event);
+    this.createdItems = removeDuplicates(this.createdItems, 'id')
+
+    function removeDuplicates(myArr, prop) {
+      return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+      });
+    }
   }
 
   chooseTestName($event) {
@@ -69,23 +98,6 @@ export class CreateVisitComponent implements OnInit {
       if (catName === this.categories[i].name) {
         this.tests = this.categories[i]['tests'];
         console.log(this.tests);
-
-      }
-    }
-
-  }
-  chooseItem($event) {
-    const testName = $event.value;
-    console.log(testName);
-
-    for (let i = 0; i < this.tests.length; i++) {
-      if (testName === this.tests[i].name) {
-        const id = this.tests[i].id;
-        this.testService.getTestItems(id).subscribe((items: any) => {
-        this.testIds.push(items.id);
-
-          this.items = items.tests_items;
-        });
 
       }
     }

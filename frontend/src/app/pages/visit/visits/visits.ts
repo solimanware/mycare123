@@ -28,13 +28,7 @@ export class VisitsOverviewComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.visitSerivce.getVisits().subscribe((data: any) => {
-      console.log(data);
-      // data.created_at = moment(data.created_at).format('YYYY/MM/DD')
-      console.log(data.created_at);
       this.visits = data;
-
-
-
       this.dataSource = new MatTableDataSource<any>(data);
     });
   }

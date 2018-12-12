@@ -1,10 +1,9 @@
 <div class="create-visit-container">
 
-  <div class="visit-header">
-    <h2 class="inline-block pl-20 pr-20">Laboratory Visit ID: 25</h2>
-    <h2 class="inline-block pr-20 pl-20">Visit Date: 31/10/2018</h2>
-    <h2 class="inline-block pr-20 pl-20">Visit Time: 8:00 PM</h2>
-  </div>
+    <div class="visit-header">
+        <h2 class="inline-block pl-20 pr-20">Laboratory Visit ID: {{visit?.id}}</h2>
+        <h2 class="inline-block pr-20 pl-20">Visit Date: {{visit?.created_at | date:'dd/MM/yyyy'}}</h2>
+      </div>
 
   <div class="main-container">
     <div class="paient-info-container pb-20 pr-20">
@@ -71,7 +70,7 @@
 
             <ng-container matColumnDef="value">
               <th mat-header-cell *matHeaderCellDef> Result </th>
-              <td mat-cell *matCellDef="let element"> <input class="test-result" type="text" [(ngModel)]="results[element.id]" [placeholder]="element.value||'please enter value'"> </td>
+              <td mat-cell *matCellDef="let element"> <input class="test-result" type="text" [(ngModel)]="results[element.id]" placeholder="please enter value" [value]="element.value"> </td>
             </ng-container>
 
 
@@ -93,7 +92,7 @@
             <button mat-raised-button color="primary" class="enter-button" (click)="submitTestResults()">Save</button>
           </div>
       
-          <div class="form-enter-button inline-block pt-20" align="center">
+          <div class="form-enter-button inline-block pt-20" align="center" (click)="discard()">
             <button mat-raised-button color="primary" class="enter-button">Discard</button>
           </div>
       

@@ -21,6 +21,7 @@ export class EditVisitComponent implements OnInit {
   testIds = [];
   visit;
   gottenItems = [];
+  allTests = [];
   constructor(
     private route: ActivatedRoute,
     private patientService: PatientService,
@@ -37,15 +38,32 @@ export class EditVisitComponent implements OnInit {
         this.patient = res.patient;
         this.patient['age'] = this.getAge(res.patient.birth_date);
         for (const item of res.tests) {
-          this.createdItems.push(item.name);
+          this.createdItems.push(item);
         }
         for (const item of res.tests) {
           this.testIds.push(item.id);
         }
       });
     });
-    this.getTestsCategories();
+    this.displayAllTests();
   }
+
+  displayAllTests() {
+    this.testService.getAllTests().subscribe((tests: any) => {
+      this.allTests = tests;
+    });
+  }
+  chooseTest(event) {
+    this.createdItems.push(event);
+    this.createdItems = removeDuplicates(this.createdItems, 'id')
+
+    function removeDuplicates(myArr, prop) {
+      return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+      });
+    }
+  }
+
   getAge(value) {
     const dob = moment(value);
     const now = moment();
@@ -55,66 +73,22 @@ export class EditVisitComponent implements OnInit {
     return `${ageYears} years, ${ageMonths} months`;
   }
   editVisit() {
-    this.visitSerivce.patchVisit(this.visit.id, this.patient['id'], this.testIds, this.notes).subscribe(res => {
-      console.log(res);
-      // navigate
+    const testIds = [];
+    this.createdItems.forEach(item => {
+      testIds.push(item.id);
+    });
+    this.visitSerivce.patchVisit(this.visit.id, this.patient['id'], testIds, this.notes).subscribe(res => {
       alert('visit edited');
       this.navigation.goToVisitsOverview();
 
     });
   }
-
-  chooseTestName($event) {
-    const catName = $event.value;
-    for (let i = 0; i < this.categories.length; i++) {
-      if (catName === this.categories[i].name) {
-        this.tests = this.categories[i]['tests'];
-        console.log(this.tests);
-
-      }
-    }
-
-  }
-  chooseItem($event) {
-    const testName = $event.value;
-    console.log(testName);
-
-    for (let i = 0; i < this.tests.length; i++) {
-      if (testName === this.tests[i].name) {
-        const id = this.tests[i].id;
-        this.testService.getTestItems(id).subscribe((items: any) => {
-          this.testIds.push(items.id);
-
-          this.items = items.tests_items;
-        });
-
-      }
-    }
-
-  }
-
-  getTestsCategories() {
-    this.testService.getAllTestsCategories().subscribe(categories => {
-      console.log(categories);
-      this.categories = categories;
-
-    });
-  }
-
-  getTestItems(id) {
-    this.testService.getTestItems(id).subscribe(items => {
-
-      this.items = items;
-    });
-  }
-
-  createNewTestItem($event) {
-    console.log($event.value);
-
-    this.createdItems.push($event.value);
-  }
   goVisitsOverview() {
     this.navigation.goToVisitsOverview();
+  }
+
+  discard() {
+    this.navigation.goToViewVistDetail(this.visit.id);
   }
 
 }

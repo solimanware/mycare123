@@ -2,11 +2,10 @@
 
   <h1 align="center">View Visit Details</h1>
 
-  <!-- <div class="visit-header">
-    <h2 class="inline-block pl-20 pr-20">Laboratory Visit ID: 25</h2>
-    <h2 class="inline-block pr-20 pl-20">Visit Date: 31/10/2018</h2>
-    <h2 class="inline-block pr-20 pl-20">Visit Time: 8:00 PM</h2>
-  </div> -->
+  <div class="visit-header">
+    <h2 class="inline-block pl-20 pr-20">Laboratory Visit ID: {{visit?.id}}</h2>
+    <h2 class="inline-block pr-20 pl-20">Visit Date: {{visit?.created_at | date:'dd/MM/yyyy'}}</h2>
+  </div>
 
   <div class="main-container">
     <div class="left-container">
@@ -32,7 +31,7 @@
       <div class="pb-20">
 
         <h3 class="nomargin">Notes:</h3>
-        <p>{{patient?.notes || 'no given notes'}}</p>
+        <p>{{visit?.notes || 'no given notes'}}</p>
       </div>
     </div>
 
