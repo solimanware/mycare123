@@ -234,17 +234,53 @@ module.exports = {
             .then(res=>{
                 console.log("remove results", res);
                 const testsIds = request.body.tests_ids || [];
-                console.log(testsIds);
                 
                 const visitsTests = testsIds.map(test_id => ({
                     test_id,
                     visit_id: id
                 }));
-                console.log({visitsTests});
                 
                 VisitsTests.bulkCreate(visitsTests).then(res => {
                     console.log('visit tests sets succesfully!');
                     
+
+                    VisitsTests.findAll({
+                        where: {
+                            visit_id: id
+                        },
+                        attributes: ['id', 'test_id', 'visit_id']
+                    }).then(visitTests=> {
+                        //TODO Get test items
+                        TestItem.findAll({
+                            where:{
+                                test_id: testsIds
+                            }
+                        }).then(items => {
+                            
+                            visitTests = visitTests.map(x => x.toJSON());
+                            let data = [];
+                            visitTests.forEach(visitTest => {
+                                let obj = {};
+                                items.forEach(item => {
+                                    if(item.test_id == visitTest.test_id){
+                                        obj = {
+                                            visit_test_id: visitTest.id,
+                                            item_id: item.id
+                                        }
+                                        data.push(obj)
+                                    }
+                                });
+                            });
+
+                            ItemsResultsValue.bulkCreate(data).then(afterCreateResults => {
+                                response.status(200).send(afterCreateResults)
+
+                            }).catch(e => {
+                                console.log('error on insert bulk for items results values ', e)
+                            })
+                        });
+                    });
+
                 }).catch(e=> {
                     console.log("Error on set visit tests ids");
                     
@@ -279,7 +315,7 @@ module.exports = {
     },
 
 
-    delete: (request, response) => {
+    remove: (request, response) => {
         const id = request.params.id;
         Visit.findById(id).then(patient => {
             patient.destroy();
