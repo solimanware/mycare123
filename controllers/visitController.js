@@ -223,27 +223,83 @@ module.exports = {
     update: (request, response) => {
         const visit = request.body;
         const id = request.params.id;
-
-        // remove all visit tests
-        VisitsTests.destroy({ where: { visit_id: id }})
+        console.log("before remove");
         
-        // add the new tests ids for this visit
-        const testsIds = request.body.tests_ids || [];
+        //Get visit tests ids
+        let visit_tests = VisitsTests.findAll({where: {visit_id: id}, attributes: ['id'], raw: true})
+        .then(visit_tests=>{
+            visit_tests_ids = visit_tests.map(item=>item.id);
+            ItemsResultsValue.destroy({where:{visit_test_id:visit_tests_ids}})
+            VisitsTests.destroy({ where: { visit_id: id }})
+            .then(res=>{
+                console.log("remove results", res);
+                const testsIds = request.body.tests_ids || [];
+                
+                const visitsTests = testsIds.map(test_id => ({
+                    test_id,
+                    visit_id: id
+                }));
+                
+                VisitsTests.bulkCreate(visitsTests).then(res => {
+                    console.log('visit tests sets succesfully!');
+                    
 
-        const visitsTests = testsIds.map(test_id => ({
-            test_id,
-            visit_id: id
-        }));
-        console.log({visitsTests});
+                    VisitsTests.findAll({
+                        where: {
+                            visit_id: id
+                        },
+                        attributes: ['id', 'test_id', 'visit_id']
+                    }).then(visitTests=> {
+                        //TODO Get test items
+                        TestItem.findAll({
+                            where:{
+                                test_id: testsIds
+                            }
+                        }).then(items => {
+                            
+                            visitTests = visitTests.map(x => x.toJSON());
+                            let data = [];
+                            visitTests.forEach(visitTest => {
+                                let obj = {};
+                                items.forEach(item => {
+                                    if(item.test_id == visitTest.test_id){
+                                        obj = {
+                                            visit_test_id: visitTest.id,
+                                            item_id: item.id
+                                        }
+                                        data.push(obj)
+                                    }
+                                });
+                            });
+
+                            ItemsResultsValue.bulkCreate(data).then(afterCreateResults => {
+                                response.status(200).send(afterCreateResults)
+
+                            }).catch(e => {
+                                console.log('error on insert bulk for items results values ', e)
+                            })
+                        });
+                    });
+
+                }).catch(e=> {
+                    console.log("Error on set visit tests ids");
+                    
+                })
         
-        VisitsTests.bulkCreate(visitsTests).then(res => {
-            console.log('visit tests sets succesfully!');
+            }).catch(e=>{
+                console.log("remove error", e);
+                
+            })
             
-        }).catch(e=> {
-            console.log("Error on set visit tests ids");
+            
+        }).catch(e=>{
+            console.log("error", e);
             
         })
-
+        // remove all visit tests
+      
+        // add the new tests ids for this visit
+      
 
         Visit.update(visit, { where: { id } })
             .then(result => {
@@ -259,7 +315,7 @@ module.exports = {
     },
 
 
-    delete: (request, response) => {
+    remove: (request, response) => {
         const id = request.params.id;
         Visit.findById(id).then(patient => {
             patient.destroy();

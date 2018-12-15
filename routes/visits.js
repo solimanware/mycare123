@@ -18,6 +18,6 @@ router.patch('/:id', visitController.update);
 router.patch('/:id/results', visitController.updateResults);
 
 
-router.delete('/:id', visitController.delete);
+router.delete('/:id', visitController.remove);
 
 module.exports = router;
