@@ -25,14 +25,13 @@ export class SearchBarComponent implements OnInit {
   }
 
   emitFormValue(option) {
-  this.result.emit(option);
-  this.myControl.setValue('');
+    this.result.emit(option);
+    this.myControl.setValue('');
   }
 
-
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.data.filter(option => option['name'].toLowerCase().indexOf(filterValue.toLowerCase())  > -1);
+    const filterValue = value;
+    return this.data.filter(option => option['name'].toLowerCase().indexOf(filterValue) > -1);
   }
 }
 
