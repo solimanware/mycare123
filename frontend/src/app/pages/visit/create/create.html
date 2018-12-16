@@ -42,7 +42,7 @@
   <div class="action-buttons-container">
 
     <div class="form-enter-button inline-block pt-20" align="center" (click)="createNewVisit()">
-      <button mat-raised-button color="primary" class="enter-button">Create Lab Visit</button>
+      <button mat-raised-button color="primary" class="enter-button" [disabled]="isDisabled">Create Lab Visit</button>
     </div>
 
     <div class="form-enter-button inline-block pt-20" align="center" (click)="goVisitsOverview()">

@@ -21,6 +21,7 @@ export class CreateVisitComponent implements OnInit {
   notes;
   allTests = [];
   emptyTests: boolean;
+  isDisabled:boolean;
   constructor(
     private route: ActivatedRoute,
     private patientService: PatientService,
@@ -54,6 +55,7 @@ export class CreateVisitComponent implements OnInit {
   }
 
   createNewVisit() {
+    this.isDisabled = true;
     const testIds = [];
     this.createdItems.forEach(item => {
       testIds.push(item.id);
@@ -63,12 +65,14 @@ export class CreateVisitComponent implements OnInit {
       alert('"You must choose a test" and this visit is not saved unless user add tests')
       alert('visit NOT created');
       this.emptyTests = true;
+      this.isDisabled=false;
     }else{
       this.emptyTests = false;
       this.visitSerivce.postVisit(this.patient['id'], testIds, this.notes).subscribe(res => {
         // navigate
         alert('visit created');
         this.navigation.goToVisitsOverview();
+        this.isDisabled=false;
   
       });
     }
