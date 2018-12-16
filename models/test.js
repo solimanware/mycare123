@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     category_id: DataTypes.INTEGER,
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE,
+    price: DataTypes.DOUBLE
   }, {
     freezeTableName: true,
     timestamps: false
