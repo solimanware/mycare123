@@ -20,7 +20,7 @@ export class SearchBarComponent implements OnInit {
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._filter(value))
+        map(value => this._filter(value.toLowerCase()))
       );
   }
 
