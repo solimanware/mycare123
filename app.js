@@ -54,5 +54,5 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/dist/mycare123/index.html'));
 });
 
-app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || port, () => console.log(`mycare123 app listening on port ${port}!`))
 
