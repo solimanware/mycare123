@@ -82,12 +82,12 @@ module.exports = {
             }
             
             // We don't need spread here, since only the results will be returned for select queries
-            genenrateVisitReport(newResults, id).then(res => {
+            // genenrateVisitReport(newResults, id).then(res => {
 
-                response.status(200).download(res)
-            });
+            //     response.status(200).download(res)
+            // });
 
-                // response.status(200).send(newResults)
+            response.status(200).send(newResults)
  
           })
 
@@ -191,7 +191,10 @@ module.exports = {
             include: [
                 {model: Patient},
                 {model: Tests}
-            ]
+            ],
+            order: [
+                ['id', 'DESC'],
+            ],
         })
             .then(result => {
                 response.status(200).send(result);
