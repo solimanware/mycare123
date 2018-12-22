@@ -79,10 +79,14 @@ export class EditResultsComponent implements OnInit {
         value: this.results[result]
       });
     }
-
-    this.visitService.patchResult(this.visit.id, arr).subscribe(res => {
-      console.log(res);
-    });
+    if(arr.length){
+      this.visitService.patchResult(this.visit.id, arr).subscribe(res => {
+        console.log(res);
+      });
+    }else{
+      alert('you can not save empty test items');
+    }
+    
 
   }
 

@@ -9,6 +9,7 @@ import { startWith, map, tap } from 'rxjs/operators';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
+  tempData: any;
   constructor() { }
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
@@ -31,7 +32,8 @@ export class SearchBarComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value;
-    return this.data.filter(option => option['name'].toLowerCase().indexOf(filterValue) > -1);
+    this.tempData = this.data;
+    return this.tempData.filter(option => option['name'].toLowerCase().indexOf(filterValue) > -1);
   }
 }
 

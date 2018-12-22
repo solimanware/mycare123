@@ -28,6 +28,7 @@ export class NewPatientComponent implements OnInit {
   ageYears = 0;
   ageMonths = 0;
   error: string;
+  alreadExists: boolean;
   constructor(private patientService: PatientService, private navigation: NavigationService) { }
 
   ngOnInit() {
@@ -35,7 +36,9 @@ export class NewPatientComponent implements OnInit {
       if(res.length>=10){
         this.patientService.searchPatientByMobile(res).subscribe((found:any)=>{
           if(found.length>0){
-            alert('This patient already exists');
+            this.alreadExists = true;
+          }else{
+            this.alreadExists = false;
           }
         })
       }
@@ -67,7 +70,7 @@ export class NewPatientComponent implements OnInit {
       this.gender.value &&
       this.mobileNumber.value &&
       this.mobileNumber.value === this.confirmMobileNumber.value &&
-      this.birthDate.value;
+      this.birthDate.value && !this.alreadExists;
   }
 
   submitPatient() {
@@ -93,6 +96,8 @@ export class NewPatientComponent implements OnInit {
       this.error = 'enter birth date';
     } else if (this.mobileNumber.value !== this.confirmMobileNumber.value) {
       this.error = `The Mobile Numbers Don't match`;
+    } else if(this.alreadExists){
+      this.error = 'This patient already exists';
     } else {
       this.error = `Fill in required data`;
     }

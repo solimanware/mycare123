@@ -28,7 +28,7 @@
 
     <div class="half float-right" align="end">
       <mat-form-field class="form-input-half">
-        <input matInput required [matDatepicker]="picker" placeholder="Choose a date" [formControl]="birthDate" (dateChange)="changeAge($event)">
+        <input matInput required [matDatepicker]="picker" placeholder="Enter birthdate" [formControl]="birthDate" (dateChange)="changeAge($event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>

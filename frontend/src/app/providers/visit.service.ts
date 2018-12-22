@@ -40,4 +40,7 @@ export class VisitService {
   printVisitPDF(id) {
     window.location.href = `https://mycare123.herokuapp.com/api/visits/${id}/results-report`;
   }
+  getVisitPrint(id) {
+    return this.http.get(`https://mycare123.herokuapp.com/api/visits/${id}/results-report`);
+  }
 }
