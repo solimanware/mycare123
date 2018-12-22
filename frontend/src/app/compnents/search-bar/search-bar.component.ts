@@ -27,7 +27,6 @@ export class SearchBarComponent implements OnInit {
 
   emitFormValue(option) {
     this.result.emit(option);
-    this.myControl.setValue('');
   }
 
   private _filter(value: string): string[] {

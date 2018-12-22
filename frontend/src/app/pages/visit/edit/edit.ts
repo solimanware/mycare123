@@ -77,11 +77,16 @@ export class EditVisitComponent implements OnInit {
     this.createdItems.forEach(item => {
       testIds.push(item.id);
     });
-    this.visitSerivce.patchVisit(this.visit.id, this.patient['id'], testIds, this.notes).subscribe(res => {
-      alert('visit edited');
-      this.navigation.goToVisitsOverview();
-
-    });
+    if(testIds.length === 0 ){
+      alert('you can not submit empty labs')
+    }else{
+      this.visitSerivce.patchVisit(this.visit.id, this.patient['id'], testIds, this.notes).subscribe(res => {
+        alert('visit edited');
+        this.navigation.goToVisitsOverview();
+  
+      });
+    }
+    
   }
   goVisitsOverview() {
     this.navigation.goToVisitsOverview();

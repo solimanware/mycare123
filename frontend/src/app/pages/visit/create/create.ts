@@ -67,6 +67,7 @@ export class CreateVisitComponent implements OnInit {
       this.emptyTests = true;
       this.isDisabled=false;
     }else{
+      this.isDisabled = true;
       this.emptyTests = false;
       this.visitSerivce.postVisit(this.patient['id'], testIds, this.notes).subscribe(res => {
         // navigate
