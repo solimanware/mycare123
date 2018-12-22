@@ -23,7 +23,7 @@ import { PatientsOverviewComponent } from './pages/patient/patients/patients';
 import { MomentDateAdapter, MOMENT_DATE_FORMATS } from './helpers/adabters/date';
 import { MAT_DATE_LOCALE, DateAdapter, MatDateFormats, MAT_DATE_FORMATS } from '@angular/material';
 import { SearchBarComponent } from './compnents/search-bar/search-bar.component';
-
+import { NgxPrintModule } from 'ngx-print';
 
 const routes: Routes = AppRoutes;
 
@@ -52,7 +52,8 @@ const routes: Routes = AppRoutes;
     AppRoutingModule,
     CustomMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPrintModule
   ],
   providers: [
     HttpClientModule,
