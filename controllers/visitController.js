@@ -191,7 +191,10 @@ module.exports = {
             include: [
                 {model: Patient},
                 {model: Tests}
-            ]
+            ],
+            order: [
+                ['id', 'DESC'],
+            ],
         })
             .then(result => {
                 response.status(200).send(result);
