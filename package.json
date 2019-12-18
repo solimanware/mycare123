@@ -19,7 +19,7 @@
     "jsonwebtoken": "^8.4.0",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.4",
-    "sequelize": "^4.41.2",
+    "sequelize": "^5.15.1",
     "underscore": "^1.9.1"
   }
 }
